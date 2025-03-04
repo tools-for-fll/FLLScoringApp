@@ -698,7 +698,8 @@ showSaved()
   if(keys.length === 0)
   {
     // Indicate that there are no saved matches.
-    saved.find(".matches").append(`<div class="tile_empty"><span>None</span></div>`);
+    saved.find(".matches").
+      append(`<div class="tile_empty"><span>None</span></div>`);
   }
   else
   {
@@ -1176,7 +1177,7 @@ loadScoresheet(year, name)
   }
 
   // Load the scoresheet from the server.
-  await $.get(`/seasons/${year}/scoresheet.json`, loaded);
+  await $.get(`seasons/${year}/scoresheet.json`, loaded);
 
   // Set the name of the game in the scorer header.
   $(".scorer .container .header .game").html(name).data("year", year);
@@ -1405,7 +1406,7 @@ loaded()
   {
     let season = data["year"];
     let year = season.substring(5);
-    let logo = `/seasons/${year}/${data["logo"]}`;
+    let logo = `seasons/${year}/${data["logo"]}`;
     let name = data["name"]["en_US"];
 
     // Construct the HTML for the tile that represents this year.
