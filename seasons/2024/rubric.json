@@ -1,0 +1,723 @@
+{
+  "areas":
+  [
+    {
+      "type": "project",
+      "name":
+      {
+        "en_US": "Innovation Project"
+      },
+      "short_name":
+      {
+        "en_US": "IP"
+      },
+      "sections":
+      [
+        {
+          "name":
+          {
+            "en_US": "Identify"
+          },
+          "description":
+          {
+            "en_US": "Team had a clearly defined problem that was well researched."
+          },
+          "items":
+          [
+            {
+              "1":
+              {
+                "en_US": "Problem not clearly defined"
+              },
+              "2":
+              {
+                "en_US": "Partially clear definition of the problem"
+              },
+              "3":
+              {
+                "en_US": "Clear definition of the problem"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            },
+            {
+              "1":
+              {
+                "en_US": "Minimal research"
+              },
+              "2":
+              {
+                "en_US": "Partial research from more than one source"
+              },
+              "3":
+              {
+                "en_US": "Clear, detailed research from a variety of sources"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            }
+          ]
+        },
+        {
+          "name":
+          {
+            "en_US": "Design"
+          },
+          "description":
+          {
+            "en_US": "Team generated innovative ideas independently before selecting and planning which one to develop."
+          },
+          "items":
+          [
+            {
+              "1":
+              {
+                "en_US": "Minimal evidence of an inclusive selection process"
+              },
+              "2":
+              {
+                "en_US": "Partial evidence of an inclusive selection process"
+              },
+              "3":
+              {
+                "en_US": "Clear evidence of an inclusive selection process"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            },
+            {
+              "1":
+              {
+                "en_US": "Minimal evidence of an effective plan"
+              },
+              "2":
+              {
+                "en_US": "Partial evidence of an effective plan"
+              },
+              "3":
+              {
+                "en_US": "Clear evidence of an effective plan"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            }
+          ]
+        },
+        {
+          "name":
+          {
+            "en_US": "Create"
+          },
+          "description":
+          {
+            "en_US": "Team developed an original idea or built on an existing one with a prototype model/drawing to represent their solution."
+          },
+          "items":
+          [
+            {
+              "1":
+              {
+                "en_US": "Minimal development of innovative solution"
+              },
+              "2":
+              {
+                "en_US": "Partial development of innovative solution"
+              },
+              "3":
+              {
+                "en_US": "Clear development of innovative solution"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            },
+            {
+              "1":
+              {
+                "en_US": "Unclear model/drawing of solution"
+              },
+              "2":
+              {
+                "en_US": "Simple model/drawing that helps to share the solution"
+              },
+              "3":
+              {
+                "en_US": "Detailed model/drawing that helps to share the solution"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            }
+          ]
+        },
+        {
+          "name":
+          {
+            "en_US": "Iterate"
+          },
+          "description":
+          {
+            "en_US": "Team shared their ideas, collected feedback, and included improvements in their solution."
+          },
+          "items":
+          [
+            {
+              "1":
+              {
+                "en_US": "Minimal sharing of their solution"
+              },
+              "2":
+              {
+                "en_US": "Shared their solution with user OR professional"
+              },
+              "3":
+              {
+                "en_US": "Shared their solution with user AND professional"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            },
+            {
+              "1":
+              {
+                "en_US": "Minimal evidence of improvements in their solution"
+              },
+              "2":
+              {
+                "en_US": "Partial evidence of improvements in their solution"
+              },
+              "3":
+              {
+                "en_US": "Clear evidence of improvements in their solution"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            }
+          ]
+        },
+        {
+          "name":
+          {
+            "en_US": "Communicate"
+          },
+          "description":
+          {
+            "en_US": "Team shared a creative and effective presentation of their current solution and its impact on their users."
+          },
+          "items":
+          [
+            {
+              "1":
+              {
+                "en_US": "Presentation minimally engaging"
+              },
+              "2":
+              {
+                "en_US": "Presentation partially engaging"
+              },
+              "3":
+              {
+                "en_US": "Presentation engaging"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            },
+            {
+              "1":
+              {
+                "en_US": "Solution and its potential impact on others unclear"
+              },
+              "2":
+              {
+                "en_US": "Solution and its potential impact on others partially clear"
+              },
+              "3":
+              {
+                "en_US": "Solution and its potential impact on others clear"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "robot_design",
+      "name":
+      {
+        "en_US": "Robot Design"
+      },
+      "short_name":
+      {
+        "en_US": "RD"
+      },
+      "sections":
+      [
+        {
+          "name":
+          {
+            "en_US": "Identify"
+          },
+          "description":
+          {
+            "en_US": "Team had a clearly defined mission strategy and explored building and coding skills they needed."
+          },
+          "items":
+          [
+            {
+              "1":
+              {
+                "en_US": "Unclear mission strategy"
+              },
+              "2":
+              {
+                "en_US": "Partially clear mission strategy"
+              },
+              "3":
+              {
+                "en_US": "Clear mission strategy"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            },
+            {
+              "1":
+              {
+                "en_US": "Limited evidence of building and coding skills in all team members"
+              },
+              "2":
+              {
+                "en_US": "Inconsistent evidence of building and coding skills in all team members"
+              },
+              "3":
+              {
+                "en_US": "Consistent evidence of building and coding skills in all team members"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            }
+          ]
+        },
+        {
+          "name":
+          {
+            "en_US": "Design"
+          },
+          "description":
+          {
+            "en_US": "Team produced innovative designs and a clear plan, seeking guidance as needed."
+          },
+          "items":
+          [
+            {
+              "1":
+              {
+                "en_US": "Minimal evidence of an effective plan"
+              },
+              "2":
+              {
+                "en_US": "Partial evidence of an effective plan"
+              },
+              "3":
+              {
+                "en_US": "Clear evidence of an effective plan"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            },
+            {
+              "1":
+              {
+                "en_US": "Minimal explanation of robot and code’s features"
+              },
+              "2":
+              {
+                "en_US": "Partial explanation of robot and code’s features"
+              },
+              "3":
+              {
+                "en_US": "Clear explanation of robot and code’s features"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            }
+          ]
+        },
+        {
+          "name":
+          {
+            "en_US": "Create"
+          },
+          "description":
+          {
+            "en_US": "Team developed an effective robot and code solution matching their mission strategy."
+          },
+          "items":
+          [
+            {
+              "1":
+              {
+                "en_US": "Limited explanation of their robot and its attachment and sensor functionality"
+              },
+              "2":
+              {
+                "en_US": "Simple explanation of their robot and its attachment and sensor functionality"
+              },
+              "3":
+              {
+                "en_US": "Detailed explanation of their robot and its attachment and sensor functionality"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            },
+            {
+              "1":
+              {
+                "en_US": "Unclear explanation of how code makes their robot act"
+              },
+              "2":
+              {
+                "en_US": "Partially clear explanation of how code makes their robot act"
+              },
+              "3":
+              {
+                "en_US": "Clear explanation of how code makes their robot act"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            }
+          ]
+        },
+        {
+          "name":
+          {
+            "en_US": "Iterate"
+          },
+          "description":
+          {
+            "en_US": "Team repeatedly tested their robot and code to identify areas for improvement and incorporated the findings into their current solution."
+          },
+          "items":
+          [
+            {
+              "1":
+              {
+                "en_US": "Minimal evidence of testing their robot and code"
+              },
+              "2":
+              {
+                "en_US": "Partial evidence of testing their robot and code"
+              },
+              "3":
+              {
+                "en_US": "Clear evidence of testing their robot and code"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            },
+            {
+              "1":
+              {
+                "en_US": "Minimal evidence their robot and code was improved"
+              },
+              "2":
+              {
+                "en_US": "Partial evidence their robot and code was improved"
+              },
+              "3":
+              {
+                "en_US": "Clear evidence their robot and code was improved"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            }
+          ]
+        },
+        {
+          "name":
+          {
+            "en_US": "Communicate"
+          },
+          "description":
+          {
+            "en_US": "Team’s explanation of the robot design process was effective and showed how all team members have been involved."
+          },
+          "items":
+          [
+            {
+              "1":
+              {
+                "en_US": "Unclear explanation of robot design process"
+              },
+              "2":
+              {
+                "en_US": "Partially clear explanation of robot design process"
+              },
+              "3":
+              {
+                "en_US": "Clear explanation of robot design process"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            },
+            {
+              "1":
+              {
+                "en_US": "Minimal evidence that all team members were involved"
+              },
+              "2":
+              {
+                "en_US": "Partial evidence that all team members were involved"
+              },
+              "3":
+              {
+                "en_US": "Clear evidence that all team members were involved"
+              },
+              "4":
+              {
+                "en_US": ""
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "core_values",
+      "name":
+      {
+        "en_US": "Core Values"
+      },
+      "short_name":
+      {
+        "en_US": "CV"
+      },
+      "sections":
+      [
+        {
+          "name":
+          {
+            "en_US": "Discovery"
+          },
+          "description":
+          {
+            "en_US": "Team explored new skills and ideas."
+          },
+          "items":
+          [
+            {
+              "1":
+              {
+                "en_US": "Minimally observed across the team"
+              },
+              "2":
+              {
+                "en_US": "Inconsistently observed across the team"
+              },
+              "3":
+              {
+                "en_US": "Consistently observed across the team"
+              },
+              "4":
+              {
+                "en_US": "Exceeds"
+              }
+            }
+          ]
+        },
+        {
+          "name":
+          {
+            "en_US": "Innovation"
+          },
+          "description":
+          {
+            "en_US": "Team used creativity and persistence to solve problems."
+          },
+          "items":
+          [
+            {
+              "1":
+              {
+                "en_US": "Minimally observed across the team"
+              },
+              "2":
+              {
+                "en_US": "Inconsistently observed across the team"
+              },
+              "3":
+              {
+                "en_US": "Consistently observed across the team"
+              },
+              "4":
+              {
+                "en_US": "Exceeds"
+              }
+            }
+          ]
+        },
+        {
+          "name":
+          {
+            "en_US": "Impact"
+          },
+          "description":
+          {
+            "en_US": "Team applied what they learned to improve their world."
+          },
+          "items":
+          [
+            {
+              "1":
+              {
+                "en_US": "Minimally observed across the team"
+              },
+              "2":
+              {
+                "en_US": "Inconsistently observed across the team"
+              },
+              "3":
+              {
+                "en_US": "Consistently observed across the team"
+              },
+              "4":
+              {
+                "en_US": "Exceeds"
+              }
+            }
+          ]
+        },
+        {
+          "name":
+          {
+            "en_US": "Inclusion"
+          },
+          "description":
+          {
+            "en_US": "Team demonstrated respect and embraced their differences."
+          },
+          "items":
+          [
+            {
+              "1":
+              {
+                "en_US": "Minimally observed across the team"
+              },
+              "2":
+              {
+                "en_US": "Inconsistently observed across the team"
+              },
+              "3":
+              {
+                "en_US": "Consistently observed across the team"
+              },
+              "4":
+              {
+                "en_US": "Exceeds"
+              }
+            }
+          ]
+        },
+        {
+          "name":
+          {
+            "en_US": "Teamwork"
+          },
+          "description":
+          {
+            "en_US": "Team clearly showed they had worked as a team throughout their journey."
+          },
+          "items":
+          [
+            {
+              "1":
+              {
+                "en_US": "Minimally observed across the team"
+              },
+              "2":
+              {
+                "en_US": "Inconsistently observed across the team"
+              },
+              "3":
+              {
+                "en_US": "Consistently observed across the team"
+              },
+              "4":
+              {
+                "en_US": "Exceeds"
+              }
+            }
+          ]
+        },
+        {
+          "name":
+          {
+            "en_US": "Fun"
+          },
+          "description":
+          {
+            "en_US": "Teams clearly had fun and celebrated what they have achieved – as individuals and a group."
+          },
+          "items":
+          [
+            {
+              "1":
+              {
+                "en_US": "Minimally observed across the team"
+              },
+              "2":
+              {
+                "en_US": "Inconsistently observed across the team"
+              },
+              "3":
+              {
+                "en_US": "Consistently observed across the team"
+              },
+              "4":
+              {
+                "en_US": "Exceeds"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
