@@ -1313,7 +1313,7 @@ selectSaved(e)
   // Insert the saved match information into the scoresheet details.
   let date =
     new Date(parseInt(target.data("key").substring(6))).toLocaleString();
-  let html = `<span>${state.comment}</span>` +
+  let html = `<span class="title">${state.comment}</span>` +
              `<span>${date}</span>`;
   $(".scorer .container .missions .details div").html(html);
 

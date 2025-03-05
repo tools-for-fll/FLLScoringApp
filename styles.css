@@ -396,6 +396,11 @@ body
           display: flex;
           flex-direction: column;
           justify-content: center;
+
+          .title
+          {
+            font-size: 1.25rem;
+          }
         }
       }
 
