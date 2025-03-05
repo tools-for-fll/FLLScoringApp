@@ -3,11 +3,10 @@
 // Open Source Software: you can modify and/or share it under the terms of the
 // BSD license file in the root directory of this project.
 
-const prefix = "fll-scorer-";
+const cacheName = `fll-scorer-site-v1`;
 
-const cacheFLLScorer = `${prefix}site-v1`;
-
-const assets = [
+const assets =
+[
   "external/font-awesome-4.7.0/css/font-awesome.min.css",
   "external/font-awesome-4.7.0/fonts/fontawesome-webfont.eot",
   "external/font-awesome-4.7.0/fonts/fontawesome-webfont.svg",
@@ -68,7 +67,7 @@ const assets = [
 
 self.addEventListener("install", installEvent => {
   installEvent.waitUntil(
-    caches.open(cacheFLLScorer).then(cache => {
+    caches.open(cacheName).then(cache => {
       cache.addAll(assets);
     })
   )
