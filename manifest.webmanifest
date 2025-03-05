@@ -4,8 +4,8 @@
   "short_name": "FLLScorer",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#fdfdfd",
-  "theme_color": "#db4938",
+  "background_color": "#000000",
+  "theme_color": "#1fa198",
   "orientation": "portrait",
   "icons":
   [

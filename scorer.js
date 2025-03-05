@@ -1398,7 +1398,7 @@ loaded()
   // is to keep the browser's console quiet about it...it is a "don't care"
   // kind of error (it is prefered to have an orientation lock, but not a
   // requirement).
-  screen.orientation.lock("portrait").catch(() => { });
+  //screen.orientation.lock("portrait").catch(() => { });
 
   // Called when the information for a given year is loaded.
   function
