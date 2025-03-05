@@ -1459,13 +1459,21 @@ $(document).on("DOMContentLoaded", loaded);
 // See if the user agent support a service worker.
 if("serviceWorker" in navigator)
 {
-  // Set a function to call when the window has finished loading.
-  $(window).on("load", function()
+  // Only register a service worker if not being served from localhost (in
+  // other words, development).
+  if((window.location.hostname !== "localhost") &&
+     (window.location.hostname !== "[::1]") &&
+     !window.location.hostname.
+        match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/))
   {
-    // Register the service worker.
-    navigator.serviceWorker
-      .register("sw.js")
-      .then(res => { })
-      .catch(err => console.log("service worker not registered", err));
-  })
+    // Set a function to call when the window has finished loading.
+    $(window).on("load", function()
+    {
+      // Register the service worker.
+      navigator.serviceWorker
+        .register("sw.js")
+        .then(res => { })
+        .catch(err => console.log("service worker not registered", err));
+    })
+  }
 }
