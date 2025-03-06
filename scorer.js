@@ -870,9 +870,22 @@ evaluate(statement, variables)
 function
 computeScore()
 {
+  let value, count, mission_score, pieces;
   let state = getScoresheet();
   let score = 0;
-  let value, count, mission_score;
+
+  // Get the list of game pieces from the scoresheet, if it exists.
+  pieces = scoresheet.pieces;
+  if(pieces === undefined)
+  {
+    pieces = [];
+  }
+
+  // Reset the count of used game pieces to zero.
+  for(let idx = 0; idx < pieces.length; idx++)
+  {
+    pieces[idx].count = 0;
+  }
 
   // Loop over the missions in this scoresheet.
   for(let idx = 0; idx < scoresheet.missions.length; idx++)
@@ -916,6 +929,41 @@ computeScore()
         count *= mission.items[item].choices["en_US"].length;
       }
 
+      // See if this mission item uses tracked game pieces, and a selection has
+      // been made.
+      if((mission.items[item].pieces !== undefined) &&
+         (state[sel] !== undefined))
+      {
+        // Loop through all the game pieces.
+        for(let gamePiece = 0; gamePiece < pieces.length; gamePiece++)
+        {
+          // Loop through all the item's game pieces.
+          for(let itemPiece = 0; itemPiece < mission.items[item].pieces.length;
+              itemPiece++)
+          {
+            // See if this game piece matches the item's game piece, and there
+            // have not already been too many of this game piece used.
+            if((pieces[gamePiece].name ===
+                mission.items[item].pieces[itemPiece].name) &&
+               (pieces[gamePiece].count <= pieces[gamePiece].quantity))
+            {
+              // Increment the count of this game piece used.
+              pieces[gamePiece].count += state[sel];
+
+              // See if there are now too many of this game piece in use.
+              if(pieces[gamePiece].count > pieces[gamePiece].quantity)
+              {
+                // Add this error to the corresponding mission.
+                $(`#${pieces[gamePiece].mission} .mission_error`).
+                  append("There are too many " +
+                         pieces[gamePiece].description["en_US"] + " in use.<br>");
+                $(`#${pieces[gamePiece].mission} .error`).show();
+              }
+            }
+          }
+        }
+      }
+
       // If there is not an item-specific score, or a selection has not been
       // made, there is nothing further to do with this item.
       if((mission.items[item].score === undefined)||
@@ -952,7 +1000,7 @@ computeScore()
           // constraint.
           $(`#${mission.mission} .error`).show();
           $(`#${mission.mission} .error .mission_error`).
-            append(mission.constraints[item].description["en_US"]);
+            append(`${mission.constraints[item].description["en_US"]}<br>`);
         }
       }
     }
