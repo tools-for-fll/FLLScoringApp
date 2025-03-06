@@ -220,23 +220,50 @@ body
       justify-content: space-between;
       padding: 0 0.5rem;
 
-      .back
+      .buttons
       {
         align-items: center;
-        cursor: pointer;
         display: flex;
-        height: 3rem;
         justify-content: center;
-        width: 3rem;
-      }
 
-      .empty
-      {
-        align-items: center;
-        display: flex;
-        height: 3rem;
-        justify-content: center;
-        width: 3rem;
+        .back
+        {
+          align-items: center;
+          cursor: pointer;
+          display: flex;
+          height: 3rem;
+          justify-content: center;
+          width: 3rem;
+        }
+
+        .empty
+        {
+          align-items: center;
+          display: flex;
+          height: 3rem;
+          justify-content: center;
+          width: 3rem;
+        }
+
+        .upload
+        {
+          align-items: center;
+          cursor: pointer;
+          display: flex;
+          height: 3rem;
+          justify-content: center;
+          width: 3rem;
+        }
+
+        .download
+        {
+          align-items: center;
+          cursor: pointer;
+          display: flex;
+          height: 3rem;
+          justify-content: center;
+          width: 3rem;
+        }
       }
     }
 
@@ -623,10 +650,21 @@ dialog#about
       justify-content: center;
       padding: 0.5rem;
 
-      .title
+      span
       {
         font-size: 1.25rem;
+        text-align: center;
+      }
+
+      .title
+      {
+        font-size: 1.5rem;
         font-weight: bold;
+      }
+
+      button
+      {
+        font-size: 1.25rem;
       }
 
       @media (width > 768px)
@@ -646,6 +684,11 @@ dialog#fontawesome
   {
     background-color: #0000003f;
   }
+
+  button
+  {
+    font-size: 1.25rem;
+  }
 }
 
 dialog#confirm
@@ -664,12 +707,18 @@ dialog#confirm
 
     p
     {
+      font-size: 1.25rem;
       text-align: center;
+    }
+
+    button
+    {
+      font-size: 1.25rem;
     }
   }
 }
 
-dialog#complete
+dialog#alert
 {
   &::backdrop
   {
@@ -685,7 +734,13 @@ dialog#complete
 
     p
     {
+      font-size: 1.25rem;
       text-align: center;
+    }
+
+    button
+    {
+      font-size: 1.25rem;
     }
   }
 }
@@ -707,7 +762,18 @@ dialog#details
     align-items: center;
     display: flex;
     flex-direction: column;
+    font-size: 1.25rem;
     justify-content: center;
+
+    input
+    {
+      font-size: 1.25rem;
+    }
+
+    button
+    {
+      font-size: 1.25rem;
+    }
   }
 }
 

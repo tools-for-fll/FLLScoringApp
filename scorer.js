@@ -313,7 +313,8 @@ showAbout()
 // Shows a confirmation dialog, allowing the the user to respond with yes or
 // no.
 function
-showConfirm(message, yes = undefined, no = undefined)
+showConfirm(message, yes = undefined, no = undefined, yesText = "Yes",
+            noText = "No")
 {
   const dialog = $("dialog#confirm");
 
@@ -396,11 +397,13 @@ showConfirm(message, yes = undefined, no = undefined)
   // Insert the provided message into the dialog.
   dialog.find("#message").html(message);
 
-  // Register the click handler for the yes button.
+  // Set the text and register the click handler for the yes button.
+  dialog.find("#yes").html(yesText);
   dialog.find("#yes").off("click");
   dialog.find("#yes").on("click", () => close(true));
 
-  // Register the click handler for the no button.
+  // Set the text and register the click handler for the no button.
+  dialog.find("#no").html(noText);
   dialog.find("#no").off("click");
   dialog.find("#no").on("click", () => close(false));
 
@@ -417,11 +420,11 @@ showConfirm(message, yes = undefined, no = undefined)
   dialog.showModal();
 }
 
-// Shows a completion dialog, indicating the completion of an action.
+// Shows an alert dialog.
 function
-showComplete(message)
+showAlert(message)
 {
-  const dialog = $("dialog#complete");
+  const dialog = $("dialog#alert");
 
   // Called when the dialog hide animation completes.
   function
@@ -666,11 +669,10 @@ showPrevious()
   panelAnimation = true;
 }
 
-// Show the saved score panel.
+// Updates the list of saved scores in the saved score panel.
 function
-showSaved()
+updateSaved()
 {
-  const main = $(".main");
   const saved = $(".saved");
   let year;
 
@@ -756,6 +758,17 @@ showSaved()
     $(".saved .container .matches .tile").on("click", selectSaved);
     $(".saved .container .matches .tile .delete").on("click", deleteSaved);
   }
+}
+
+// Show the saved score panel.
+function
+showSaved()
+{
+  const main = $(".main");
+  const saved = $(".saved");
+
+  // Update the list of saved scores.
+  updateSaved();
 
   // Cover the main panel.
   main.addClass("cover");
@@ -948,7 +961,8 @@ computeScore()
                (pieces[gamePiece].count <= pieces[gamePiece].quantity))
             {
               // Increment the count of this game piece used.
-              pieces[gamePiece].count += state[sel];
+              pieces[gamePiece].count +=
+                mission.items[item].pieces[itemPiece].quantity[state[sel]];
 
               // See if there are now too many of this game piece in use.
               if(pieces[gamePiece].count > pieces[gamePiece].quantity)
@@ -1308,8 +1322,8 @@ saveScoresheet(e)
     // storage.
     storage.setItem(`saved_${date.getTime()}`, JSON.stringify(result));
 
-    // Show that the scoresheet has ben saved.
-    showComplete("Scoresheet saved!");
+    // Show that the scoresheet has bden saved.
+    showAlert("Scoresheet saved!");
   }
 
   // Get the match details from the user.
@@ -1414,8 +1428,8 @@ deleteSaved(e)
     // Remove this entry from the storage.
     storage.removeItem(target.data("key"));
 
-    // Remove this tile from the DOM.
-    target.remove();
+    // Update the list of saved scores.
+    updateSaved();
   }
 
   // Convert the save time from milliseconds to a locale-specific strign.
@@ -1435,6 +1449,151 @@ deleteSaved(e)
 
   // Return false to prevent further event propagation.
   return(false);
+}
+
+// Uploads saved scores from the client device.
+function
+upload()
+{
+  const input = $(".saved .container .header #upload");
+  let json;
+
+  // Called when the contents of the file should be loaded into local storage.
+  function
+  load()
+  {
+    // Loop through the keys in the file.
+    for(const key in json)
+    {
+      // SKip this entry if it is not a saved score.
+      if(key.substring(0, 6) !== "saved_")
+      {
+        continue;
+      }
+
+      // Store the JSON value into local storage.
+      storage.setItem(key, json[key]);
+    }
+
+    // Update the list of saved scores.
+    updateSaved();
+  }
+
+  // Called when the current saved scores should be replaced/deleted.
+  function
+  replace()
+  {
+    // Loop through the items in local storage.
+    for(let idx = 0; idx < storage.length; idx++)
+    {
+      // Get the key for this item.
+      const key = storage.key(idx);
+
+      // Skip this item if is not a saved score.
+      if(key.substring(0, 6) !== "saved_")
+      {
+        continue;
+      }
+
+      // Remove this item from local storage.
+      storage.removeItem(key);
+
+      // Decrement the index so that new item in this index will be checked.
+      idx--;
+    }
+
+    // Load the contents of the file.
+    load();
+  }
+
+  // Called when the file contents have been read.
+  function
+  loaded(text)
+  {
+    // Parse the file as a JSON.
+    try
+    {
+      json = JSON.parse(text);
+    }
+    catch
+    {
+      // Indicate that the file is invalid.
+      showAlert("Invalid file!");
+
+      // There is nothing further to do.
+      return;
+    }
+
+    // Determine if the current saved scores should be kept/augmented or
+    // deleted.
+    showConfirm("Add to the current saved scores, or replace them?", load,
+                replace, "Add", "Replace");
+  }
+
+  // Called when a file is selected for uploading.
+  function
+  selected()
+  {
+    // Get the information about the file.
+    let file = input[0].files[0];
+
+    // Create a file reader to read the contents of the file.
+    let fr = new FileReader();
+
+    // Set the function to call when the file contents have been read.
+    fr.onload = function ()
+    {
+      loaded(fr.result);
+    };
+
+    // Read the file as text.
+    fr.readAsText(file);
+  }
+
+  // Disable the change handler for the file select, if it exists.
+  input.off("change");
+
+  // Reset the value of the file select.
+  input.val("");
+
+  // Set the change handler for the file select.
+  input.on("change", selected);
+
+  // Click on the file select, triggering the file selector dialog.
+  input.trigger("click");
+}
+
+// Downloads the saved scores to the client device.
+function
+download()
+{
+  let matches = {};
+
+  // Loop through all the items in local storage.
+  for(let idx = 0; idx < storage.length; idx++)
+  {
+    // Get the key for this item.
+    const key = storage.key(idx);
+
+    // Skip this item if it is not a saved score.
+    if(key.substring(0, 6) !== "saved_")
+    {
+      continue;
+    }
+
+    // Add this saved score to the set of saved scores.
+    matches[key] = storage.getItem(key);
+  }
+
+  // Convert the saved scores object into a JSON string.
+  matches = JSON.stringify(matches);
+
+  // Trigger a download of the resulting JSON string.
+  Object.assign(document.createElement("a"),
+                {
+                  href: `data:text/json;base64,${window.btoa(matches)}`,
+                  download: "scores.json"
+                }).click();
 }
 
 // Called when the load of the DOM has completed.
@@ -1491,6 +1650,8 @@ loaded()
 
   // Add click handlers to the saved scores panel.
   $(".saved .container .header .back").on("click", showPrevious);
+  $(".saved .container .header .upload").on("click", upload);
+  $(".saved .container .header .download").on("click", download);
 
   // Add click handlers to the scorer panel.
   $(".scorer .container .header .back").on("click", showPrevious);

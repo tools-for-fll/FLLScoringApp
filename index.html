@@ -32,9 +32,16 @@ license file in the root directory of this project.
     <div class="saved">
       <div class="container">
         <div class="header">
-          <span class="back fa fa-chevron-left"></span>
+          <div class="buttons">
+            <span class="back fa fa-chevron-left"></span>
+            <span class="empty"></span>
+          </div>
           <span>Saved Matches</span>
-          <span class="empty"></span>
+          <div class="buttons">
+            <span class="upload fa fa-upload"></span>
+            <span class="download fa fa-download"></span>
+            <input id="upload" type="file" style="display: none;" />
+          </div>
         </div>
         <div class="matches"></div>
       </div>
@@ -313,7 +320,7 @@ license file in the root directory of this project.
         </span>
       </div>
     </dialog>
-    <dialog id="complete">
+    <dialog id="alert">
       <div class="container">
         <p id="message"></p>
         <button>OK</button>
