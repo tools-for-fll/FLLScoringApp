@@ -13,6 +13,7 @@ const assets =
   "external/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf",
   "external/font-awesome-4.7.0/fonts/fontawesome-webfont.woff",
   "external/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2",
+  "external/iosPWASplash.js",
   "external/jquery-3.7.1.min.js",
   "favicon.png",
   "icons/icon-128x128.png",
