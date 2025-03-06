@@ -847,7 +847,7 @@ evaluate(statement, variables)
 
     // Replace all instances of this variable within the statement with its
     // value.
-    stmt = stmt.replace(new RegExp(` ${key} `, "i"), ` ${value} `);
+    stmt = stmt.replace(new RegExp(` ${key} `, "g"), ` ${value} `);
   }
 
   // Evaluate the statement.
