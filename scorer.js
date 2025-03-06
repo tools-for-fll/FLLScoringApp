@@ -40,8 +40,6 @@ iosPWASplash(icon, color = "white")
   // Calculate the pixel ratio
   const pixelRatio = window.devicePixelRatio || 1;
 
-  console.log(`width: ${deviceWidth} height: ${deviceHeight} ratio: ${pixelRatio}`);
-
   // Create two canvases and get their contexts to draw landscape and portrait
   // splash screens.
   const canvas = document.createElement("canvas");
