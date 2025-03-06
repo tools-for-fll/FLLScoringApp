@@ -1,5 +1,10 @@
 {
   "background_color": "#000000",
+  "categories":
+  [
+    "education"
+  ],
+  "description": "FIRST LEGO League (FLL) robot game scorer.",
   "display": "standalone",
   "icons":
   [
@@ -49,5 +54,5 @@
   "orientation": "portrait",
   "short_name": "FLL Scorer",
   "start_url": "index.html",
-  "theme_color": "#1fa198"
+  "theme_color": "#000000"
 }
