@@ -265,6 +265,11 @@ body
           width: 3rem;
         }
       }
+
+      input
+      {
+        display: none;
+      }
     }
 
     .matches
