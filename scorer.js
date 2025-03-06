@@ -23,6 +23,17 @@ let panelAnimation = false;
 // scoresheets).
 let readonly = false;
 
+const UA = navigator.userAgent;
+
+const IOS = UA.match(/iPhone|iPad|iPod/);
+const ANDROID = UA.match(/Android/);
+
+const PLATFORM = IOS ? 'ios' : ANDROID ? 'android' : 'unknown';
+
+const standalone = window.matchMedia('(display-mode: standalone)').matches;
+
+const INSTALLED = !!(standalone || (IOS && !UA.match(/Safari/)));
+
 // Adapted from ios-pwa-splash <https://github.com/avadhesh18/iosPWASplash>
 function
 iosPWASplash(icon, color = "white")
@@ -219,6 +230,8 @@ showAbout()
 
     // Remove the keydown event listener.
     $(document).off("keydown", keyDown);
+
+    showAlert(`${INSTALLED} ${PLATFORM}`);
   }
 
   // Called when the dialog should be closed.
