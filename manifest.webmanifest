@@ -4,7 +4,7 @@
   [
     "education"
   ],
-  "description": "FIRST LEGO League (FLL) robot game scorer.",
+  "description": "Scorer for the FIRST LEGO League (FLL) robot game",
   "display": "standalone",
   "icons":
   [
@@ -49,9 +49,41 @@
       "type": "image/png"
     }
   ],
+  "id": "index.html",
   "lang": "en-US",
   "name": "FLL Scorer",
   "orientation": "portrait",
+  "screenshots":
+  [
+    {
+      "form_factor": "narrow",
+      "label": "The main panel shown on mobile.",
+      "sizes": "662x1434",
+      "src": "screenshots/screen1n.png",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "narrow",
+      "label": "The scoring panel shown on mobile.",
+      "sizes": "662x1434",
+      "src": "screenshots/screen2n.png",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "wide",
+      "label": "The main panel shown on desktop.",
+      "sizes": "1735x864",
+      "src": "screenshots/screen1w.png",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "wide",
+      "label": "The scoring panel shown on desktop.",
+      "sizes": "1735x864",
+      "src": "screenshots/screen2w.png",
+      "type": "image/png"
+    }
+  ],
   "short_name": "FLL Scorer",
   "start_url": "index.html",
   "theme_color": "#000000"
