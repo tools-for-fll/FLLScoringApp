@@ -3,7 +3,9 @@
 // Open Source Software: you can modify and/or share it under the terms of the
 // BSD license file in the root directory of this project.
 
-const cacheName = `fll-scorer-site-v1`;
+const prefix = "fll-scorer-";
+
+const cacheName = `${prefix}site-v2`;
 
 const assets =
 [
@@ -65,18 +67,33 @@ const assets =
   "sw.js",
 ];
 
-self.addEventListener("install", installEvent => {
-  installEvent.waitUntil(
+self.addEventListener("install", evt => {
+  evt.waitUntil(
     caches.open(cacheName).then(cache => {
       cache.addAll(assets);
     })
   )
 });
 
-self.addEventListener("fetch", fetchEvent => {
-  fetchEvent.respondWith(
-    caches.match(fetchEvent.request).then(res => {
-      return(res || fetch(fetchEvent.request));
+self.addEventListener("activate", async evt => {
+  evt.waitUntil(
+    caches.keys().then(cacheList => {
+      return(Promise.all(
+        cacheList.map(cache => {
+          if((cache.substring(0, prefix.length) === prefix) &&
+             (cache !== cacheName)) {
+            return(caches.delete(cache));
+          }
+        })
+      ));
+    })
+  )
+});
+
+self.addEventListener("fetch", evt => {
+  evt.respondWith(
+    caches.match(evt.request).then(res => {
+      return(res || fetch(evt.request));
     })
   );
 });
