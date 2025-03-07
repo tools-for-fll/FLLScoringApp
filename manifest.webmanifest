@@ -70,6 +70,13 @@
       "type": "image/png"
     },
     {
+      "form_factor": "narrow",
+      "label": "The saved score panel shown on mobile.",
+      "sizes": "662x1434",
+      "src": "screenshots/screen3n.png",
+      "type": "image/png"
+    },
+    {
       "form_factor": "wide",
       "label": "The main panel shown on desktop.",
       "sizes": "1735x864",
@@ -81,6 +88,13 @@
       "label": "The scoring panel shown on desktop.",
       "sizes": "1735x864",
       "src": "screenshots/screen2w.png",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "wide",
+      "label": "The saved score panel shown on desktop.",
+      "sizes": "1735x864",
+      "src": "screenshots/screen3w.png",
       "type": "image/png"
     }
   ],
