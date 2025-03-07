@@ -11,12 +11,16 @@ progressive web app (PWA).
 
 At startup, a list of FLL seasons that can be scored are shown:
 
-![main screen](screenshots/screen1n.png)
+<p align="center">
+  <img alt="main screen" src="screenshots/screen1n.png" style="width: 20rem" />
+</p>
 
 The list can be scrolled up and down to uncover all of the games that are
 supported. Clicking on one enters the scoresheet for that game:
 
-![scoring screen](screenshots/screen2n.png)
+<p align="center">
+  <img alt="scoring screen" src="screenshots/screen2n.png" style="width: 20rem" />
+</p>
 
 Scoring is performed by making selections for each mission in the game. The
 score is updated whenver a selection is made or changed, and the current score
@@ -35,7 +39,9 @@ performances at a competition.
 On the main screen, the list button in the upper right of the screen shows the
 saved scoresheets:
 
-![saved score screen](screenshots/screen3n.png)
+<p align="center">
+  <img alt="saved score screen" src="screenshots/screen3n.png" style="width: 20rem" />
+</p>
 
 Clicking on one of them shows the saved scoresheet but does not allow it to be
 changed. The import and export buttons in the upper right corner of the saved
