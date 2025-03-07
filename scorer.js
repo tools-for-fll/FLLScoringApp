@@ -558,7 +558,7 @@ updateSaved()
                  `     data-score="${data.score}" ` +
                  `     data-comment="${data.comment}">` +
                  `  <div class="logo">` +
-                 `    <img src="${years[year].logo}" />` +
+                 `    <img src="${years[year].logo}" alt="FLL game logo" />` +
                  `  </div>` +
                  `  <span class="title">` +
                  `    <span>${data.comment}</span>` +
@@ -967,7 +967,8 @@ loadScoresheet(year, name)
       html += `<span>${name}</span>`;
       if(noTouch)
       {
-        html += `<img class="no_touch" src="no_touch.png"></img>`;
+        html += `<img class="no_touch" src="no_touch.png" ` +
+                `alt="No touch restriction" />`;
       }
       html += `</div>`;
 
@@ -1464,7 +1465,7 @@ loaded()
     // Construct the HTML for the tile that represents this year.
     let html = `<div class="tile" data-year="${year}" data-name="${name}">` +
                `  <div class="logo">` +
-               `    <img src="${logo}" />` +
+               `    <img src="${logo}" alt="FLL game logo" />` +
                `  </div>` +
                `  <span class="title">${season} ${name}</span>` +
                `  <span class="arrow fa fa-chevron-right"></span>` +

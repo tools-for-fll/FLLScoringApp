@@ -865,11 +865,13 @@ dialog#details
 {
   from
   {
-    transform: scale(0)
+    opacity: 0;
+    transform: scale(0);
   }
   to
   {
-    transform: scale(1)
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -877,10 +879,12 @@ dialog#details
 {
   from
   {
-    transform: scale(1)
+    opacity: 1;
+    transform: scale(1);
   }
   to
   {
-    transform: scale(0)
+    opacity: 0;
+    transform: scale(0);
   }
 }
