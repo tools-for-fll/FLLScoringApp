@@ -26,9 +26,17 @@ license file in the root directory of this project.
     <div class="main">
       <div class="container">
         <div class="header">
-          <span class="about fa fa-question-circle-o"></span>
+          <div class="buttons">
+            <span class="about fa fa-question-circle-o"></span>
+            <span class="empty"></span>
+          </div>
           <span>FLL Scorer</span>
-          <span class="list fa fa-list"></span>
+          <div class="buttons">
+            <span class="empty empty2"></span>
+            <span class="ios_install fa fa-cloud-download"></span>
+            <span class="android_install fa fa-cloud-download"></span>
+            <span class="list fa fa-list"></span>
+          </div>
         </div>
         <div class="content"></div>
       </div>
@@ -67,6 +75,75 @@ license file in the root directory of this project.
         </div>
       </div>
     </div>
+    <dialog id="ios_install">
+      <span class="title">
+        Installing FLL Scorer
+      </span>
+      <hr>
+      <span>
+        This application can be installed to your device by following these
+        simple steps:
+        <ol>
+          <li>
+            Click on the share button at the bottom center of the browser.
+          </li>
+          <li>
+            Scroll down and select "Add to Home Screen" from the menu that pops
+            up.
+          </li>
+          <li>
+            Select "Add" to install this application to the home screen.
+          </li>
+        </ol>
+        The benefit of installing as an application is the ability to use it
+        even when you do not have a network connection (for exmple, in some
+        schools).
+      </span>
+      <br>
+      <br>
+      <span class="buttons">
+        <button id="ok">OK</button>
+      </span>
+    </dialog>
+    <dialog id="android_install">
+      <span class="title">
+        Installing FLL Scorer
+      </span>
+      <hr>
+      <span>
+        This application can be installed to your device by following these
+        simple steps:
+        <ol>
+          <li>
+            Click on the three vertical dots in the upper right corner of the
+            browser.
+          </li>
+          <li>
+            Select "Add to Home screen" from the menu that pops up.
+          </li>
+          <li>
+            Select "Install" to install this application (as opposed to adding
+            a browser shortcut).
+          </li>
+          <li>
+            Select "Install" to confirm that you'd like to install the
+            application.
+          </li>
+          <li>
+            Select "Add to home screen" to finalize installing the application
+            to the home screen.
+          </li>
+        </ol>
+        The benefit of installing as an application is the ability to use it
+        even when you do not have a network connection (for exmple, in some
+        schools).
+      </span>
+      <br>
+      <br>
+      <span class="buttons">
+        <button id="ok">OK</button>
+      </span>
+    </dialog>
     <dialog id="about">
       <div class="container">
         <div class="logo">
@@ -82,7 +159,7 @@ license file in the root directory of this project.
             and <a id="btn_fontawesome">FontAwesome 4.7</a>
           </span>
           <br>
-          <button>OK</button>
+          <button id="ok">OK</button>
         </div>
       </div>
     </dialog>
@@ -130,7 +207,7 @@ license file in the root directory of this project.
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
         OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       </p>
-      <button>OK</button>
+      <button id="ok">OK</button>
     </dialog>
     <dialog id="jquery">
       <p>
@@ -162,7 +239,7 @@ license file in the root directory of this project.
         TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
         SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       </p>
-      <button>OK</button>
+      <button id="ok">OK</button>
     </dialog>
     <dialog id="fontawesome">
       <p>
@@ -313,7 +390,7 @@ license file in the root directory of this project.
         FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
         OTHER DEALINGS IN THE FONT SOFTWARE.
       </p>
-      <button>OK</button>
+      <button id="ok">OK</button>
     </dialog>
     <dialog id="confirm">
       <div class="container">
@@ -327,7 +404,7 @@ license file in the root directory of this project.
     <dialog id="alert">
       <div class="container">
         <p id="message"></p>
-        <button>OK</button>
+        <button id="ok">OK</button>
       </div>
     </dialog>
     <dialog id="details">

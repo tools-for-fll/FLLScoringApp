@@ -96,24 +96,57 @@ body
       justify-content: space-between;
       padding: 0 0.5rem;
 
-      .about
+      .buttons
       {
         align-items: center;
-        cursor: pointer;
         display: flex;
-        height: 3rem;
         justify-content: center;
-        width: 3rem;
-      }
 
-      .list
-      {
-        align-items: center;
-        cursor: pointer;
-        display: flex;
-        height: 3rem;
-        justify-content: center;
-        width: 3rem;
+        .about
+        {
+          align-items: center;
+          cursor: pointer;
+          display: flex;
+          height: 3rem;
+          justify-content: center;
+          width: 3rem;
+        }
+
+        .empty
+        {
+          height: 3rem;
+          width: 3rem;
+        }
+
+        .ios_install
+        {
+          align-items: center;
+          cursor: pointer;
+          display: none;
+          height: 3rem;
+          justify-content: center;
+          width: 3rem;
+        }
+
+        .android_install
+        {
+          align-items: center;
+          cursor: pointer;
+          display: none;
+          height: 3rem;
+          justify-content: center;
+          width: 3rem;
+        }
+
+        .list
+        {
+          align-items: center;
+          cursor: pointer;
+          display: flex;
+          height: 3rem;
+          justify-content: center;
+          width: 3rem;
+        }
       }
     }
 
@@ -238,10 +271,7 @@ body
 
         .empty
         {
-          align-items: center;
-          display: flex;
           height: 3rem;
-          justify-content: center;
           width: 3rem;
         }
 
@@ -284,8 +314,8 @@ body
         cursor: pointer;
         display: grid;
         grid-template-columns: 5rem 1fr 2rem 2rem;
-        height: 5.5rem;
         margin: 0.5rem;
+        min-height: 5.5rem;
         padding: 0.5rem;
         width: calc(100% - 1rem);
 
@@ -335,7 +365,7 @@ body
         border-radius: 1rem;
         cursor: pointer;
         display: flex;
-        font-size: 1.25em;
+        font-size: 1.25rem;
         height: 5.5rem;
         justify-content: center;
         margin: 0.5rem;
@@ -502,11 +532,10 @@ body
             border-radius: 0.75rem;
             color: var(--button-color);
             float: right;
-            font-size: 1rem;
-            height: 2rem;
+            font-size: 1.25rem;
             margin: 0.25rem 0 0 0.25rem;
             min-width: 4rem;
-            padding: 0.25em 0.75em;
+            padding: 0.25rem 0.75rem;
 
             &.selected
             {
@@ -591,6 +620,7 @@ dialog
     border: 1px solid var(--accent-color);
     border-radius: 0.5rem;
     color: var(--button-color);
+    font-size: 1.25rem;
     min-width: 5rem;
     padding: 0.5rem;
 
@@ -610,6 +640,26 @@ dialog
   p
   {
     margin: 0 0 1rem 0;
+  }
+}
+
+dialog#ios_install,
+dialog#android_install
+{
+  .title
+  {
+    align-items: center;
+    display: flex;
+    font-size: 1.25rem;
+    justify-content: center;
+  }
+
+  .buttons
+  {
+    align-items: center;
+    display: flex;
+    font-size: 1.25rem;
+    justify-content: center;
   }
 }
 
@@ -673,11 +723,6 @@ dialog#about
         font-weight: bold;
       }
 
-      button
-      {
-        font-size: 1.25rem;
-      }
-
       @media (width > 768px)
       {
         grid-column: 2;
@@ -694,11 +739,6 @@ dialog#fontawesome
   &::backdrop
   {
     background-color: #0000003f;
-  }
-
-  button
-  {
-    font-size: 1.25rem;
   }
 }
 
@@ -721,11 +761,6 @@ dialog#confirm
       font-size: 1.25rem;
       text-align: center;
     }
-
-    button
-    {
-      font-size: 1.25rem;
-    }
   }
 }
 
@@ -747,11 +782,6 @@ dialog#alert
     {
       font-size: 1.25rem;
       text-align: center;
-    }
-
-    button
-    {
-      font-size: 1.25rem;
     }
   }
 }
@@ -777,11 +807,6 @@ dialog#details
     justify-content: center;
 
     input
-    {
-      font-size: 1.25rem;
-    }
-
-    button
     {
       font-size: 1.25rem;
     }

@@ -23,16 +23,8 @@ let panelAnimation = false;
 // scoresheets).
 let readonly = false;
 
-const UA = navigator.userAgent;
-
-const IOS = UA.match(/iPhone|iPad|iPod/);
-const ANDROID = UA.match(/Android/);
-
-const PLATFORM = IOS ? 'ios' : ANDROID ? 'android' : 'unknown';
-
-const standalone = window.matchMedia('(display-mode: standalone)').matches;
-
-const INSTALLED = !!(standalone || (IOS && !UA.match(/Safari/)));
+// The stack of dialogs that are open.
+let dialogStack = [];
 
 // Adapted from ios-pwa-splash <https://github.com/avadhesh18/iosPWASplash>
 function
@@ -207,113 +199,46 @@ hideScorer()
   panelAnimation = false;
 }
 
-// Shows the about dialog.
+// Shows a dialog.
 function
-showAbout()
+showDialog(dialog, buttons = [])
 {
-  const dialog = $("dialog#about");
-  let showingLicense = false;
-
-  // Called when the dialog hide animation completes.
-  function
-  closeEnd()
+  // Create an return a promise that is resolved when the dialog is closed.
+  return(new Promise((resolve) =>
   {
-    // Remove the hide class (preparing the dialog for the next time it is
-    // displayed).
-    dialog.removeClass("hide");
-
-    // Close the modal dialog.
-    dialog.close();
-
-    // Remove the end of animation event listener.
-    dialog.off("animationend", closeEnd);
-
-    // Remove the keydown event listener.
-    $(document).off("keydown", keyDown);
-
-    showAlert(`${INSTALLED} ${PLATFORM}`);
-  }
-
-  // Called when the dialog should be closed.
-  function
-  close()
-  {
-    // Add an end of animation event listener.
-    dialog.on("animationend", closeEnd);
-
-    // Add the hide class to the dialog, starting the close animation.
-    dialog.addClass("hide");
-
-    // Return false to prevent further event propagation.
-    return(false);
-  }
-
-  // Called when there is a click (mouse or touch).
-  function
-  click(e)
-  {
-    const rect = e.target.getBoundingClientRect();
-
-    // See if the click is outside the dialog box.
-    if((rect.left > e.clientX) || (rect.right < e.clientX) ||
-       (rect.top > e.clientY) || (rect.bottom < e.clientY))
-    {
-      // Close the dialog.
-      close();
-    }
-  }
-
-  // Called when a key is pressed.
-  function
-  keyDown(e)
-  {
-    // Close the dialog if the escape key is pressed.
-    if((e.key == "Escape") && !showingLicense)
-    {
-      // Start the animated close of the dialog.
-      close();
-
-      // Prevent any further handling of this keystroke.
-      e.preventDefault();
-    }
-  }
-
-  // Shows a license dialog.
-  function
-  showLicense(id)
-  {
-    const license = $(`dialog${id}`);
-
     // Called when the dialog hide animation completes.
     function
-    closeLicenseEnd()
+    closeEnd(result)
     {
       // Remove the hide class (preparing the dialog for the next time it is
       // displayed).
-      license.removeClass("hide");
+      dialog.removeClass("hide");
 
       // Close the modal dialog.
-      license.close();
+      dialog.close();
 
       // Remove the end of animation event listener.
-      license.off("animationend", closeLicenseEnd);
+      dialog.off("animationend");
+
+      // Remove this dialog from the stack.
+      dialogStack.pop();
 
       // Remove the keydown event listener.
-      $(document).off("keydown", keyDownLicense);
+      $(document).off("keydown", keyDown);
 
-      // A license is no longer being shown.
-      showingLicense = false;
+      // Resolve the promise with the result of the dialog.
+      resolve(result);
     }
 
     // Called when the dialog should be closed.
     function
-    closeLicense()
+    close(result)
     {
       // Add an end of animation event listener.
-      license.on("animationend", closeLicenseEnd);
+      dialog.on("animationend", () => closeEnd(result));
 
       // Add the hide class to the dialog, starting the close animation.
-      license.addClass("hide");
+      dialog.addClass("hide");
 
       // Return false to prevent further event propagation.
       return(false);
@@ -321,7 +246,7 @@ showAbout()
 
     // Called when there is a click (mouse or touch).
     function
-    clickLicense(e)
+    click(e)
     {
       const rect = e.target.getBoundingClientRect();
 
@@ -329,55 +254,74 @@ showAbout()
       if((rect.left > e.clientX) || (rect.right < e.clientX) ||
          (rect.top > e.clientY) || (rect.bottom < e.clientY))
       {
-        // Close the license dialog.
-        closeLicense();
+        // Close the dialog.
+        close(-1);
       }
     }
 
     // Called when a key is pressed.
     function
-    keyDownLicense(e)
+    keyDown(e)
     {
       // Close the dialog if the escape key is pressed.
-      if(e.key == "Escape")
+      if((e.key == "Escape") &&
+         (dialogStack[dialogStack.length - 1] == dialog))
       {
         // Start the animated close of the dialog.
-        closeLicense();
+        close(-1);
 
         // Prevent any further handling of this keystroke.
         e.preventDefault();
       }
     }
 
-    // Register the click handler for the button.
-    license.find("button").off("click");
-    license.find("button").on("click", closeLicense);
+    // Loop through the buttons in the dialog.
+    for(let idx = 0; idx < buttons.length; idx++)
+    {
+      // Add the click handler to this button.
+      let button = dialog.find(`#${buttons[idx][0]}`);
+      button.off("click");
+      button.on("click", () => close(buttons[idx][1]));
+    }
 
     // Register the click handler for the backdrop.
-    license.off("click");
-    license.on("click", clickLicense);
+    dialog.off("click");
+    dialog.on("click", click);
 
     // Add a keydown listener to the document to override the default Escape
     // key handling for a modal dialog (which simply closes it, instead of
     // animating the close like needed here).
-    $(document).on("keydown", keyDownLicense);
+    $(document).on("keydown", keyDown);
+
+    // Add this dialog to the dialog stack.
+    dialogStack.push(dialog);
+
+    // Show the dialog.
+    dialog.showModal();
+
+    // Scroll to the top of the dialog.
+    dialog.scrollTop(0);
+  }));
+}
+
+// Shows the about dialog.
+function
+showAbout()
+{
+  const dialog = $("dialog#about");
+
+  // Shows a license dialog.
+  function
+  showLicense(id)
+  {
+    const license = $(`dialog${id}`);
 
     // Show the license dialog.
-    license.showModal();
-
-    // Scroll to the top of the license.
-    license.scrollTop(0);
-
-    // A license is being shown.
-    showingLicense = true;
+    showDialog(license, [ [ "ok", 0 ]]);
 
     // Return false to prevent further event propagation.
     return(false);
   }
-
-  // Register the click handler for the close button.
-  dialog.find("button").off("click");
-  dialog.find("button").on("click", close);
 
   // Register the click handler for the license.
   dialog.find("#btn_license").off("click");
@@ -392,314 +336,94 @@ showAbout()
   dialog.find("#btn_fontawesome").on("click",
                                      () => showLicense("#fontawesome"));
 
-  // Register the click handler for the backdrop.
-  dialog.off("click");
-  dialog.on("click", click);
-
-  // Add a keydown listener to the document to override the default Escape key
-  // handling for a modal dialog (which simply closes it, instead of animating
-  // the close like needed here).
-  $(document).on("keydown", keyDown);
-
   // Show the about dialog.
-  dialog.showModal();
+  showDialog(dialog, [ [ "ok", 0 ]]);
+}
+
+// Shows installation instructions for iOS.
+function
+showIOS()
+{
+  const dialog = $("dialog#ios_install");
+
+  // Show the dialog.
+  showDialog(dialog, [ [ "ok", 0 ]]);
+}
+
+// Shows installation instructions for Android.
+function
+showAndroid()
+{
+  const dialog = $("dialog#android_install");
+
+  // Show the dialog.
+  showDialog(dialog, [ [ "ok", 0 ]]);
 }
 
 // Shows a confirmation dialog, allowing the the user to respond with yes or
 // no.
-function
+async function
 showConfirm(message, yes = undefined, no = undefined, yesText = "Yes",
             noText = "No")
 {
   const dialog = $("dialog#confirm");
 
-  // Called when the dialog hide animation completes.
-  function
-  closeEnd()
-  {
-    // Remove the hide class (preparing the dialog for the next time it is
-    // displayed).
-    dialog.removeClass("hide");
-
-    // Close the modal dialog.
-    dialog.close();
-
-    // Remove the end of animation event listener.
-    dialog.off("animationend", closeEnd);
-
-    // Remove the keydown event listener.
-    $(document).off("keydown", keyDown);
-  }
-
-  // Called when the dialog is closed.
-  function
-  close(confirmed)
-  {
-    // If the dialog was confirmed, and there is a yes callback function, call
-    // it now.
-    if(confirmed && (yes !== undefined))
-    {
-      yes();
-    }
-
-    // If the dialog was not confirmed, and there is a no callback function,
-    // call it now.
-    if(!confirmed && (no !== undefined))
-    {
-      no();
-    }
-
-    // Add an end of animation event listener.
-    dialog.on("animationend", closeEnd);
-
-    // Add the hide class to the dialog, starting the close animation.
-    dialog.addClass("hide");
-
-    // Return false to prevent further event propagation.
-    return(false);
-  }
-
-  // Called when there is a click (mouse or touch).
-  function
-  click(e)
-  {
-    const rect = e.target.getBoundingClientRect();
-
-    // See if the click is outside the dialog box.
-    if((rect.left > e.clientX) || (rect.right < e.clientX) ||
-       (rect.top > e.clientY) || (rect.bottom < e.clientY))
-    {
-      // Close the dialog without confirming it.
-      close(false);
-    }
-  }
-
-  // Called when a key is pressed.
-  function
-  keyDown(e)
-  {
-    // Close the dialog if the escape key is pressed.
-    if(e.key == "Escape")
-    {
-      // Start the animated close of the dialog.
-      close();
-
-      // Prevent any further handling of this keystroke.
-      e.preventDefault();
-    }
-  }
-
   // Insert the provided message into the dialog.
   dialog.find("#message").html(message);
 
-  // Set the text and register the click handler for the yes button.
+  // Set the text for the yes button.
   dialog.find("#yes").html(yesText);
-  dialog.find("#yes").off("click");
-  dialog.find("#yes").on("click", () => close(true));
 
-  // Set the text and register the click handler for the no button.
+  // Set the text for the no button.
   dialog.find("#no").html(noText);
-  dialog.find("#no").off("click");
-  dialog.find("#no").on("click", () => close(false));
 
-  // Register the click handler for the backdrop.
-  dialog.off("click");
-  dialog.on("click", click);
+  // Show the dialog and wait for its result.
+  let result = await showDialog(dialog, [ [ "yes", 0 ], [ "no", 1 ]]);
 
-  // Add a keydown listener to the document to override the default Escape key
-  // handling for a modal dialog (which simply closes it, instead of animating
-  // the close like needed here).
-  $(document).on("keydown", keyDown);
+  // If yes was selected and there is a function to call for it, call it now.
+  if((result === 0) && (yes !== undefined))
+  {
+    yes();
+  }
 
-  // Show the confirmation dialog.
-  dialog.showModal();
+  // If no was selected and there is a function to call for it, call it now.
+  if((result === 1) && (no !== undefined))
+  {
+    no();
+  }
 }
 
 // Shows an alert dialog.
-function
+async function
 showAlert(message)
 {
   const dialog = $("dialog#alert");
 
-  // Called when the dialog hide animation completes.
-  function
-  closeEnd()
-  {
-    // Remove the hide class (preparing the dialog for the next time it is
-    // displayed).
-    dialog.removeClass("hide");
-
-    // Close the modal dialog.
-    dialog.close();
-
-    // Remove the end of animation event listener.
-    dialog.off("animationend", closeEnd);
-
-    // Remove the keydown event listener.
-    $(document).off("keydown", keyDown);
-  }
-
-  // Called when the dialog is closed.
-  function
-  close()
-  {
-    // Add an end of animation event listener.
-    dialog.on("animationend", closeEnd);
-
-    // Add the hide class to the dialog, starting the close animation.
-    dialog.addClass("hide");
-
-    // Return false to prevent further event propagation.
-    return(false);
-  }
-
-  // Called when there is a click (mouse or touch).
-  function
-  click(e)
-  {
-    const rect = e.target.getBoundingClientRect();
-
-    // See if the click is outside the dialog box.
-    if((rect.left > e.clientX) || (rect.right < e.clientX) ||
-       (rect.top > e.clientY) || (rect.bottom < e.clientY))
-    {
-      // Close the dialog.
-      close();
-    }
-  }
-
-  // Called when a key is pressed.
-  function
-  keyDown(e)
-  {
-    // Close the dialog if the escape key is pressed.
-    if(e.key == "Escape")
-    {
-      // Start the animated close of the dialog.
-      close();
-
-      // Prevent any further handling of this keystroke.
-      e.preventDefault();
-    }
-  }
-
   // Insert the provided message into the dialog.
   dialog.find("#message").html(message);
 
-  // Register the click handler for the button.
-  dialog.find("button").off("click");
-  dialog.find("button").on("click", close);
-
-  // Register the click handler for the backdrop.
-  dialog.off("click");
-  dialog.on("click", click);
-
-  // Add a keydown listener to the document to override the default Escape key
-  // handling for a modal dialog (which simply closes it, instead of animating
-  // the close like needed here).
-  $(document).on("keydown", keyDown);
-
   // Show the dialog.
-  dialog.showModal();
+  await showDialog(dialog, [ [ "ok", 0 ] ]);
 }
 
 // Gets saved match details from the user.
-function
+async function
 getDetails(accept = undefined)
 {
   const dialog = $("dialog#details");
 
-  // Called when the dialog hide animation completes.
-  function
-  closeEnd()
-  {
-    // Remove the hide class (preparing the dialog for the next time it is
-    // displayed).
-    dialog.removeClass("hide");
-
-    // Close the modal dialog.
-    dialog.close();
-
-    // Remove the end of animation event listener.
-    dialog.off("animationend", closeEnd);
-
-    // Remove the keydown event listener.
-    $(document).off("keydown", keyDown);
-  }
-
-  // Called when the dialog is closed.
-  function
-  close(confirmed)
-  {
-    // If the dialog was confirmed, and there is a yes callback function, call
-    // it now.
-    if(confirmed && (accept !== undefined))
-    {
-      accept(dialog.find("input").val());
-    }
-
-    // Add an end of animation event listener.
-    dialog.on("animationend", closeEnd);
-
-    // Add the hide class to the dialog, starting the close animation.
-    dialog.addClass("hide");
-
-    // Return false to prevent further event propagation.
-    return(false);
-  }
-
-  // Called when there is a click (mouse or touch).
-  function
-  click(e)
-  {
-    const rect = e.target.getBoundingClientRect();
-
-    // See if the click is outside the dialog box.
-    if((rect.left > e.clientX) || (rect.right < e.clientX) ||
-       (rect.top > e.clientY) || (rect.bottom < e.clientY))
-    {
-      // Close the dialog without confirming it.
-      close(false);
-    }
-  }
-
-  // Called when a key is pressed.
-  function
-  keyDown(e)
-  {
-    // Close the dialog if the escape key is pressed.
-    if(e.key == "Escape")
-    {
-      // Start the animated close of the dialog.
-      close();
-
-      // Prevent any further handling of this keystroke.
-      e.preventDefault();
-    }
-  }
-
   // Reset the input field.
   dialog.find("input").val("");
 
-  // Register the click handler for the yes button.
-  dialog.find("#save").off("click");
-  dialog.find("#save").on("click", () => close(true));
+  // Show the dialog and wait for its result.
+  let result = await showDialog(dialog, [ [ "save", 1 ], [ "cancel", 0 ]]);
 
-  // Register the click handler for the no button.
-  dialog.find("#cancel").off("click");
-  dialog.find("#cancel").on("click", () => close(false));
-
-  // Register the click handler for the backdrop.
-  dialog.off("click");
-  dialog.on("click", click);
-
-  // Add a keydown listener to the document to override the default Escape key
-  // handling for a modal dialog (which simply closes it, instead of animating
-  // the close like needed here).
-  $(document).on("keydown", keyDown);
-
-  // Show the confirmation dialog.
-  dialog.showModal();
+  // If the dialog was confirmed, and there is an accept callback function,
+  // call it now.
+  if((result === 1) && (accept !== undefined))
+  {
+    accept(dialog.find("input").val());
+  }
 }
 
 // Shows the previous panel; this may be the saved score panel or the main
@@ -1695,6 +1419,32 @@ download()
 async function
 loaded()
 {
+  // Determine if the app is installed, and the platform it is running on.
+  const ua = navigator.userAgent;
+  const isIOS = ua.match(/iPhone|iPad|iPod/);
+  const isAndroid = ua.match(/Android/);
+  const standalone = window.matchMedia('(display-mode: standalone)').matches;
+  const isInstalled = !!(standalone || (isIOS && !ua.match(/Safari/)));
+
+  // If the app is not installed, and this is a platform on which it makes
+  // sense to install it (mobile), enable the button to provide the relevant
+  // instructions.
+  if(!isInstalled)
+  {
+    const buttons = $(".main .container .header .buttons");
+
+    if(isIOS)
+    {
+      buttons.find(".empty2").hide();
+      buttons.find(".ios_install").css("display", "flex");
+    }
+    else if(isAndroid)
+    {
+      buttons.find(".empty2").hide();
+      buttons.find(".android_install").css("display", "flex");
+    }
+  }
+
   // Set the orientation lock to portrait. On some platforms (such as desktop),
   // orientation lock is not available, and will throw an exception. The catch
   // is to keep the browser's console quiet about it...it is a "don't care"
@@ -1740,6 +1490,8 @@ loaded()
 
   // Add click handlers to the main panel.
   $(".main .container .header .about").on("click", showAbout);
+  $(".main .container .header .ios_install").on("click", showIOS);
+  $(".main .container .header .android_install").on("click", showAndroid);
   $(".main .container .header .list").on("click", showSaved);
   $(".tile").on("click", selectYear);
 
