@@ -65,141 +65,141 @@ body
   top: 0;
   transform: translateX(0dvw);
   width: 100dvw;
+}
 
-  &.cover
-  {
-    animation: page_cover 0.5s ease normal;
-  }
+.main.cover
+{
+  animation: page_cover 0.5s ease normal;
+}
 
-  &.uncover
-  {
-    animation: page_uncover 0.5s ease normal;
-  }
+.main.uncover
+{
+  animation: page_uncover 0.5s ease normal;
+}
 
-  .container
-  {
-    display: grid;
-    grid-template-rows: 3rem 1fr;
-    height: 100dvh;
-    overflow: hidden;
-    position: fixed;
-    width: 100dvw;
+.main .container
+{
+  display: grid;
+  grid-template-rows: 3rem 1fr;
+  height: 100dvh;
+  overflow: hidden;
+  position: fixed;
+  width: 100dvw;
+}
 
-    .header
-    {
-      align-items: center;
-      background-color: var(--accent-background-color);
-      color: var(--accent-color);
-      display: flex;
-      font-size: 1.5rem;
-      font-weight: bold;
-      justify-content: space-between;
-      padding: 0 0.5rem;
+.main .container .header
+{
+  align-items: center;
+  background-color: var(--accent-background-color);
+  color: var(--accent-color);
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: bold;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
 
-      .buttons
-      {
-        align-items: center;
-        display: flex;
-        justify-content: center;
+.main .container .header .buttons
+{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
 
-        .about
-        {
-          align-items: center;
-          cursor: pointer;
-          display: flex;
-          height: 3rem;
-          justify-content: center;
-          width: 3rem;
-        }
+.main .container .header .buttons .about
+{
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 3rem;
+  justify-content: center;
+  width: 3rem;
+}
 
-        .empty
-        {
-          height: 3rem;
-          width: 3rem;
-        }
+.main .container .header .buttons .empty
+{
+  height: 3rem;
+  width: 3rem;
+}
 
-        .ios_install
-        {
-          align-items: center;
-          cursor: pointer;
-          display: none;
-          height: 3rem;
-          justify-content: center;
-          width: 3rem;
-        }
+.main .container .header .buttons .ios_install
+{
+  align-items: center;
+  cursor: pointer;
+  display: none;
+  height: 3rem;
+  justify-content: center;
+  width: 3rem;
+}
 
-        .android_install
-        {
-          align-items: center;
-          cursor: pointer;
-          display: none;
-          height: 3rem;
-          justify-content: center;
-          width: 3rem;
-        }
+.main .container .header .buttons .android_install
+{
+  align-items: center;
+  cursor: pointer;
+  display: none;
+  height: 3rem;
+  justify-content: center;
+  width: 3rem;
+}
 
-        .list
-        {
-          align-items: center;
-          cursor: pointer;
-          display: flex;
-          height: 3rem;
-          justify-content: center;
-          width: 3rem;
-        }
-      }
-    }
+.main .container .header .buttons .list
+{
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 3rem;
+  justify-content: center;
+  width: 3rem;
+}
 
-    .content
-    {
-      background-color: var(--background-color);
-      overflow-y: auto;
+.main .container .content
+{
+  background-color: var(--background-color);
+  overflow-y: auto;
+}
 
-      .tile
-      {
-        border: 1px solid var(--border-color);
-        border-radius: 1rem;
-        cursor: pointer;
-        display: grid;
-        grid-template-columns: 5rem 1fr 2rem;
-        height: 5.5rem;
-        margin: 0.5rem;
-        padding: 0.5rem;
-        width: calc(100% - 1rem);
+.main .container .content .tile
+{
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 5rem 1fr 2rem;
+  height: 5.5rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  width: calc(100% - 1rem);
+}
 
-        .logo
-        {
-          align-items: center;
-          display: flex;
-          grid-column: 1;
-          justify-content: center;
+.main .container .content .tile .logo
+{
+  align-items: center;
+  display: flex;
+  grid-column: 1;
+  justify-content: center;
+}
 
-          img
-          {
-            max-height: 4rem;
-            max-width: 4rem;
-          }
-        }
+.main .container .content .tile .logo img
+{
+  max-height: 4rem;
+  max-width: 4rem;
+}
 
-        .title
-        {
-          align-items: center;
-          display: flex;
-          font-size: 1.25rem;
-          grid-column: 2;
-          justify-content: left;
-        }
+.main .container .content .tile .title
+{
+  align-items: center;
+  display: flex;
+  font-size: 1.25rem;
+  grid-column: 2;
+  justify-content: left;
+}
 
-        .arrow
-        {
-          align-items: center;
-          display: flex;
-          grid-column: 3;
-          justify-content: center;
-        }
-      }
-    }
-  }
+.main .container .content .tile .arrow
+{
+  align-items: center;
+  display: flex;
+  grid-column: 3;
+  justify-content: center;
 }
 
 .saved
@@ -212,168 +212,168 @@ body
   top: 0;
   transform: translateX(0dvw);
   width: 100dvw;
+}
 
-  &.cover
-  {
-    animation: page_cover 0.5s ease normal;
-  }
+.saved.cover
+{
+  animation: page_cover 0.5s ease normal;
+}
 
-  &.uncover
-  {
-    animation: page_uncover 0.5s ease normal;
-  }
+.saved.uncover
+{
+  animation: page_uncover 0.5s ease normal;
+}
 
-  &.show
-  {
-    animation: page_show 0.5s ease normal;
-  }
+.saved.show
+{
+  animation: page_show 0.5s ease normal;
+}
 
-  &.hide
-  {
-    animation: page_hide 0.5s ease normal;
-  }
+.saved.hide
+{
+  animation: page_hide 0.5s ease normal;
+}
 
-  .container
-  {
-    display: grid;
-    grid-template-rows: 3rem 1fr;
-    height: 100dvh;
-    overflow: hidden;
-    position: fixed;
-    width: 100dvw;
+.saved .container
+{
+  display: grid;
+  grid-template-rows: 3rem 1fr;
+  height: 100dvh;
+  overflow: hidden;
+  position: fixed;
+  width: 100dvw;
+}
 
-    .header
-    {
-      align-items: center;
-      background-color: var(--accent-background-color);
-      color: var(--accent-color);
-      display: flex;
-      font-size: 1.5rem;
-      grid-row: 1;
-      justify-content: space-between;
-      padding: 0 0.5rem;
+.saved .container .header
+{
+  align-items: center;
+  background-color: var(--accent-background-color);
+  color: var(--accent-color);
+  display: flex;
+  font-size: 1.5rem;
+  grid-row: 1;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
 
-      .buttons
-      {
-        align-items: center;
-        display: flex;
-        justify-content: center;
+.saved .container .header .buttons
+{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
 
-        .back
-        {
-          align-items: center;
-          cursor: pointer;
-          display: flex;
-          height: 3rem;
-          justify-content: center;
-          width: 3rem;
-        }
+.saved .container .header .buttons .back
+{
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 3rem;
+  justify-content: center;
+  width: 3rem;
+}
 
-        .empty
-        {
-          height: 3rem;
-          width: 3rem;
-        }
+.saved .container .header .buttons .empty
+{
+  height: 3rem;
+  width: 3rem;
+}
 
-        .upload
-        {
-          align-items: center;
-          cursor: pointer;
-          display: flex;
-          height: 3rem;
-          justify-content: center;
-          width: 3rem;
-        }
+.saved .container .header .buttons .upload
+{
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 3rem;
+  justify-content: center;
+  width: 3rem;
+}
 
-        .download
-        {
-          align-items: center;
-          cursor: pointer;
-          display: flex;
-          height: 3rem;
-          justify-content: center;
-          width: 3rem;
-        }
-      }
+.saved .container .header .buttons .download
+{
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 3rem;
+  justify-content: center;
+  width: 3rem;
+}
 
-      input
-      {
-        display: none;
-      }
-    }
+.saved .container .header input
+{
+  display: none;
+}
 
-    .matches
-    {
-      background-color: var(--background-color);
-      overflow-y: auto;
+.saved .container .matches
+{
+  background-color: var(--background-color);
+  overflow-y: auto;
+}
 
-      .tile
-      {
-        border: 1px solid var(--border-color);
-        border-radius: 1rem;
-        cursor: pointer;
-        display: grid;
-        grid-template-columns: 5rem 1fr 2rem 2rem;
-        margin: 0.5rem;
-        min-height: 5.5rem;
-        padding: 0.5rem;
-        width: calc(100% - 1rem);
+.saved .container .matches .tile
+{
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 5rem 1fr 2rem 2rem;
+  margin: 0.5rem;
+  min-height: 5.5rem;
+  padding: 0.5rem;
+  width: calc(100% - 1rem);
+}
 
-        .logo
-        {
-          align-items: center;
-          display: flex;
-          grid-column: 1;
-          justify-content: center;
+.saved .container .matches .tile .logo
+{
+  align-items: center;
+  display: flex;
+  grid-column: 1;
+  justify-content: center;
+}
 
-          img
-          {
-            max-height: 4rem;
-            max-width: 4rem;
-          }
-        }
+.saved .container .matches .tile .logo img
+{
+  max-height: 4rem;
+  max-width: 4rem;
+}
 
-        .title
-        {
-          display: flex;
-          flex-direction: column;
-          font-size: 1.25rem;
-          grid-column: 2;
-        }
+.saved .container .matches .tile .title
+{
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+  grid-column: 2;
+}
 
-        .delete
-        {
-          align-items: center;
-          display: flex;
-          grid-column: 3;
-          justify-content: center;
-        }
+.saved .container .matches .tile .delete
+{
+  align-items: center;
+  display: flex;
+  grid-column: 3;
+  justify-content: center;
+}
 
-        .arrow
-        {
-          align-items: center;
-          display: flex;
-          grid-column: 4;
-          justify-content: center;
-        }
-      }
+.saved .container .matches .tile .arrow
+{
+  align-items: center;
+  display: flex;
+  grid-column: 4;
+  justify-content: center;
+}
 
-      .tile_empty
-      {
-        align-items: center;
-        border: 1px solid var(--border-color);
-        border-radius: 1rem;
-        cursor: pointer;
-        display: flex;
-        font-size: 1.25rem;
-        height: 5.5rem;
-        justify-content: center;
-        margin: 0.5rem;
-        padding: 0.5rem;
-        width: calc(100% - 1rem);
-      }
-    }
-  }
+.saved .container .matches .tile_empty
+{
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.25rem;
+  height: 5.5rem;
+  justify-content: center;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  width: calc(100% - 1rem);
 }
 
 .scorer
@@ -386,210 +386,210 @@ body
   top: 0;
   transform: translateX(0dvw);
   width: 100dvw;
+}
 
-  &.show
-  {
-    animation: page_show 0.5s ease normal;
-  }
+.scorer.show
+{
+  animation: page_show 0.5s ease normal;
+}
 
-  &.hide
-  {
-    animation: page_hide 0.5s ease normal;
-  }
+.scorer.hide
+{
+  animation: page_hide 0.5s ease normal;
+}
 
-  .container
-  {
-    display: grid;
-    grid-template-rows: 3rem 1fr 3rem;
-    height: 100dvh;
-    overflow: hidden;
-    position: fixed;
-    width: 100dvw;
+.scorer .container
+{
+  display: grid;
+  grid-template-rows: 3rem 1fr 3rem;
+  height: 100dvh;
+  overflow: hidden;
+  position: fixed;
+  width: 100dvw;
+}
 
-    .header
-    {
-      align-items: center;
-      background-color: var(--accent-background-color);
-      color: var(--accent-color);
-      display: flex;
-      font-size: 1.5rem;
-      grid-row: 1;
-      justify-content: space-between;
-      padding: 0 0.5rem;
+.scorer .container .header
+{
+  align-items: center;
+  background-color: var(--accent-background-color);
+  color: var(--accent-color);
+  display: flex;
+  font-size: 1.5rem;
+  grid-row: 1;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
 
-      .back
-      {
-        align-items: center;
-        cursor: pointer;
-        display: flex;
-        height: 3rem;
-        justify-content: center;
-        width: 3rem;
-      }
+.scorer .container .header .back
+{
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 3rem;
+  justify-content: center;
+  width: 3rem;
+}
 
-      .reset
-      {
-        align-items: center;
-        cursor: pointer;
-        display: flex;
-        height: 3rem;
-        justify-content: center;
-        width: 3rem;
-      }
-    }
+.scorer .container .header .reset
+{
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 3rem;
+  justify-content: center;
+  width: 3rem;
+}
 
-    .missions
-    {
-      background-color: var(--background-color);
-      grid-row: 2;
-      overflow-y: auto;
+.scorer .container .missions
+{
+  background-color: var(--background-color);
+  grid-row: 2;
+  overflow-y: auto;
+}
 
-      .details
-      {
-        border: 0.1rem solid var(--color);
-        border-radius: 1rem;
-        display: none;
-        margin: 0.5rem;
-        padding: 0.5rem;
+.scorer .container .missions .details
+{
+  border: 0.1rem solid var(--color);
+  border-radius: 1rem;
+  display: none;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
 
-        div
-        {
-          align-items: center;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
+.scorer .container .missions .details div
+{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-          .title
-          {
-            font-size: 1.25rem;
-          }
-        }
-      }
+.scorer .container .missions .details div .title
+{
+  font-size: 1.25rem;
+}
 
-      .mission
-      {
-        border: 0.1rem solid var(--accent-color);
-        border-radius: 1rem;
-        display: grid;
-        grid-template-columns: 5rem 1fr;
-        margin: 0.5rem;
-        padding: 0.5rem;
+.scorer .container .missions .mission
+{
+  border: 0.1rem solid var(--accent-color);
+  border-radius: 1rem;
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
 
-        .mission_id
-        {
-          align-items: center;
-          background-color: var(--button-select-background-color);
-          border-radius: 0.5rem 0 0 0;
-          color: var(--button-select-color);
-          display: flex;
-          font-size: 1.25rem;
-          grid-column: 1;
-          justify-content: center;
-          min-height: 2rem;
+.scorer .container .missions .mission .mission_id
+{
+  align-items: center;
+  background-color: var(--button-select-background-color);
+  border-radius: 0.5rem 0 0 0;
+  color: var(--button-select-color);
+  display: flex;
+  font-size: 1.25rem;
+  grid-column: 1;
+  justify-content: center;
+  min-height: 2rem;
+}
 
-          span
-          {
-            background-color: var(--button-select-background-color);
-          }
-        }
+.scorer .container .missions .mission .mission_id span
+{
+  background-color: var(--button-select-background-color);
+}
 
-        .mission_name
-        {
-          align-items: center;
-          background-color: var(--background-color);
-          color: var(--foreground-color);
-          display: flex;
-          font-size: 1.25rem;
-          grid-column: 2;
-          margin-left: 0.25rem;
-          min-height: 2rem;
+.scorer .container .missions .mission .mission_name
+{
+  align-items: center;
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  display: flex;
+  font-size: 1.25rem;
+  grid-column: 2;
+  margin-left: 0.25rem;
+  min-height: 2rem;
+}
 
-          .no_touch
-          {
-            height: 2rem;
-            margin-left: auto;
-            width: 2rem;
-          }
-        }
+.scorer .container .missions .mission .mission_name .no_touch
+{
+  height: 2rem;
+  margin-left: auto;
+  width: 2rem;
+}
 
-        .mission_desc
-        {
-          grid-column: 1 / span 2;
-          font-size: 1rem;
-        }
+.scorer .container .missions .mission .mission_desc
+{
+  grid-column: 1 / span 2;
+  font-size: 1rem;
+}
 
-        .mission_sel
-        {
-          display: flex;
-          flex-wrap: wrap;
-          grid-column: 1 / span 2;
-          justify-content: flex-end;
+.scorer .container .missions .mission .mission_sel
+{
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: 1 / span 2;
+  justify-content: flex-end;
+}
 
-          button
-          {
-            background-color: var(--button-background-color);
-            border: 0;
-            border-radius: 0.75rem;
-            color: var(--button-color);
-            float: right;
-            font-size: 1.25rem;
-            margin: 0.25rem 0 0 0.25rem;
-            min-width: 4rem;
-            padding: 0.25rem 0.75rem;
+.scorer .container .missions .mission .mission_sel button
+{
+  background-color: var(--button-background-color);
+  border: 0;
+  border-radius: 0.75rem;
+  color: var(--button-color);
+  float: right;
+  font-size: 1.25rem;
+  margin: 0.25rem 0 0 0.25rem;
+  min-width: 4rem;
+  padding: 0.25rem 0.75rem;
+}
 
-            &.selected
-            {
-              background-color: var(--button-select-background-color);
-              color: var(--button-select-color);
-            }
-          }
-        }
+.scorer .container .missions .mission .mission_sel button.selected
+{
+  background-color: var(--button-select-background-color);
+  color: var(--button-select-color);
+}
 
-        hr
-        {
-          border: 0.05rem solid var(--accent-color);
-          grid-column: 1 / span 2;
-          margin: 0.25rem 0;
-        }
+.scorer .container .missions .mission hr
+{
+  border: 0.05rem solid var(--accent-color);
+  grid-column: 1 / span 2;
+  margin: 0.25rem 0;
+}
 
-        .error
-        {
-          display: none;
-          grid-column: 1 / span 2;
+.scorer .container .missions .mission .error
+{
+  display: none;
+  grid-column: 1 / span 2;
+}
 
-          .mission_error
-          {
-            background-color: var(--error-color);
-            border-radius: 0 0 0.5rem 0.5rem;
-            color: var(--foreground-color);
-            padding: 0.5rem;
-          }
-        }
-      }
-    }
+.scorer .container .missions .mission .error .mission_error
+{
+  background-color: var(--error-color);
+  border-radius: 0 0 0.5rem 0.5rem;
+  color: var(--foreground-color);
+  padding: 0.5rem;
+}
 
-    .footer
-    {
-      align-items: center;
-      background-color: var(--accent-background-color);
-      color: var(--accent-color);
-      display: flex;
-      font-size: 1.5rem;
-      grid-row: 3;
-      justify-content: space-between;
-      padding: 0 0.5rem;
+.scorer .container .footer
+{
+  align-items: center;
+  background-color: var(--accent-background-color);
+  color: var(--accent-color);
+  display: flex;
+  font-size: 1.5rem;
+  grid-row: 3;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
 
-      .save
-      {
-        align-items: center;
-        cursor: pointer;
-        display: flex;
-        height: 3rem;
-        justify-content: center;
-        width: 3rem;
-      }
-    }
-  }
+.scorer .container .footer .save
+{
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 3rem;
+  justify-content: center;
+  width: 3rem;
 }
 
 dialog
@@ -597,220 +597,218 @@ dialog
   border: 1px solid var(--accent-color);
   border-radius: 1rem;
   padding: 1rem;
+}
 
-  &[open]
+dialog[open]
+{
+  animation: show_dialog 0.25s ease normal;
+}
+
+dialog.hide
+{
+  animation: hide_dialog 0.25s ease normal;
+}
+
+dialog a
+{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+dialog button
+{
+  background-color: var(--button-background-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 0.5rem;
+  color: var(--button-color);
+  font-size: 1.25rem;
+  min-width: 5rem;
+  padding: 0.5rem;
+}
+
+dialog button:hover
+{
+  background-color: var(--button-select-background-color);
+  color: var(--button-select-color);
+}
+
+dialog hr
+{
+  border: 1px solid var(--accent-color);
+  margin: 0 0 1rem 0;
+}
+
+dialog p
+{
+  margin: 0 0 1rem 0;
+}
+
+dialog#ios_install::backdrop,
+dialog#android_install::backdrop
+{
+  background-color: #000000c0;
+}
+
+dialog#ios_install .title,
+dialog#android_install .title
+{
+  align-items: center;
+  display: flex;
+  font-size: 1.25rem;
+  justify-content: center;
+}
+
+dialog#ios_install .buttons,
+dialog#android_install .buttons
+{
+  align-items: center;
+  display: flex;
+  font-size: 1.25rem;
+  justify-content: center;
+}
+
+dialog#about::backdrop
+{
+  background-color: #000000c0;
+}
+
+dialog#about .container
+{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+@media (width > 768px)
+{
+  dialog#about .container
   {
-    animation: show_dialog 0.25s ease normal;
-  }
-
-  &.hide
-  {
-    animation: hide_dialog 0.25s ease normal;
-  }
-
-  a
-  {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-
-  button
-  {
-    background-color: var(--button-background-color);
-    border: 1px solid var(--accent-color);
-    border-radius: 0.5rem;
-    color: var(--button-color);
-    font-size: 1.25rem;
-    min-width: 5rem;
-    padding: 0.5rem;
-
-    &:hover
-    {
-      background-color: var(--button-select-background-color);
-      color: var(--button-select-color);
-    }
-  }
-
-  hr
-  {
-    border: 1px solid var(--accent-color);
-    margin: 0 0 1rem 0;
-  }
-
-  p
-  {
-    margin: 0 0 1rem 0;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: unset;
   }
 }
 
-dialog#ios_install,
-dialog#android_install
+dialog#about .container .logo
 {
-  .title
-  {
-    align-items: center;
-    display: flex;
-    font-size: 1.25rem;
-    justify-content: center;
-  }
+  align-items: center;;
+  display: flex;
+  grid-row: 1;
+  justify-content: center;
+  padding: 0.5rem;
+}
 
-  .buttons
+dialog#about .container .logo img
+{
+  max-height: 100%;
+  max-width: 100%;
+}
+
+@media (width > 768px)
+{
+  dialog#about .container .logo img
   {
-    align-items: center;
-    display: flex;
-    font-size: 1.25rem;
-    justify-content: center;
+    grid-column: 1;
+    grid-row: unset;
   }
 }
 
-dialog#about
+dialog#about .container .info
 {
-  &::backdrop
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  grid-row: 2;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+dialog#about .container .info span
+{
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+dialog#about .container .info .title
+{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+@media (width > 768px)
+{
+  dialog#about .container .info .title
   {
-    background-color: #000000c0;
-  }
-
-  .container
-  {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-
-    @media (width > 768px)
-    {
-      grid-template-columns: 1fr 3fr;
-      grid-template-rows: unset;
-    }
-
-    .logo
-    {
-      align-items: center;;
-      display: flex;
-      grid-row: 1;
-      justify-content: center;
-      padding: 0.5rem;
-
-      img
-      {
-        max-height: 100%;
-        max-width: 100%;
-      }
-
-      @media (width > 768px)
-      {
-        grid-column: 1;
-        grid-row: unset;
-      }
-    }
-
-    .info
-    {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      grid-row: 2;
-      justify-content: center;
-      padding: 0.5rem;
-
-      span
-      {
-        font-size: 1.25rem;
-        text-align: center;
-      }
-
-      .title
-      {
-        font-size: 1.5rem;
-        font-weight: bold;
-      }
-
-      @media (width > 768px)
-      {
-        grid-column: 2;
-        grid-row: unset;
-      }
-    }
+    grid-column: 2;
+    grid-row: unset;
   }
 }
 
-dialog#license,
-dialog#jquery,
-dialog#fontawesome
+dialog#license::backdrop,
+dialog#jquery::backdrop,
+dialog#fontawesome::backdrop
 {
-  &::backdrop
-  {
-    background-color: #0000003f;
-  }
+  background-color: #0000003f;
 }
 
-dialog#confirm
+dialog#confirm::backdrop
 {
-  &::backdrop
-  {
-    background-color: #000000c0;
-  }
-
-  .container
-  {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    p
-    {
-      font-size: 1.25rem;
-      text-align: center;
-    }
-  }
+  background-color: #000000c0;
 }
 
-dialog#alert
+dialog#confirm .container
 {
-  &::backdrop
-  {
-    background-color: #000000c0;
-  }
-
-  .container
-  {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    p
-    {
-      font-size: 1.25rem;
-      text-align: center;
-    }
-  }
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-dialog#details
+dialog#confirm .container p
 {
-  &::backdrop
-  {
-    background-color: #000000c0;
-  }
+  font-size: 1.25rem;
+  text-align: center;
+}
 
-  input
-  {
-    width: 100%;
-  }
+dialog#alert::backdrop
+{
+  background-color: #000000c0;
+}
 
-  .container
-  {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    font-size: 1.25rem;
-    justify-content: center;
+dialog#alert .container
+{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-    input
-    {
-      font-size: 1.25rem;
-    }
-  }
+dialog#alert .container p
+{
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+dialog#details::backdrop
+{
+  background-color: #000000c0;
+}
+
+dialog#details input
+{
+  width: 100%;
+}
+
+dialog#details .container
+{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+  justify-content: center;
+}
+
+dialog#details .container input
+{
+  font-size: 1.25rem;
 }
 
 @keyframes page_cover
