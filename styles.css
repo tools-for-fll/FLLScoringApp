@@ -7,7 +7,6 @@
 
 :root
 {
-  color-scheme: light dark;
   --color-black: #000000;
   --color-cyan: #1fa198;
   --color-cyan-dark: #0f504c;
@@ -29,16 +28,40 @@
   --color-red: #ff3f3f;
   --color-light-red: #7f0000;
   --color-white: #ffffff;
-  --accent-background-color: light-dark(var(--color-gray13), var(--color-gray3));
-  --accent-color: light-dark(var(--color-cyan-dark), var(--color-cyan));
-  --color: light-dark(var(--color-black), var(--color-white));
-  --background-color: light-dark(var(--color-white), var(--color-black));
-  --border-color: light-dark(var(--color-cyan-dark), var(--color-cyan));
-  --error-color: light-dark(var(--color-red), var(--color-red));
-  --button-color: light-dark(var(--color-black), var(--color-white));
-  --button-background-color: light-dark(var(--color-gray13), var(--color-gray3));
-  --button-select-color: light-dark(var(--color-white), var(--color-black));
-  --button-select-background-color: light-dark(var(--color-cyan-dark), var(--color-cyan));
+}
+
+@media (prefers-color-scheme: dark)
+{
+  :root
+  {
+    --accent-background-color: var(--color-gray3);
+    --accent-color: var(--color-cyan);
+    --color: var(--color-white);
+    --background-color: var(--color-black);
+    --border-color: var(--color-cyan);
+    --error-color: var(--color-red);
+    --button-color: var(--color-white);
+    --button-background-color: var(--color-gray3);
+    --button-select-color: var(--color-black);
+    --button-select-background-color: var(--color-cyan);
+  }
+}
+
+@media (prefers-color-scheme: light)
+{
+  :root
+  {
+    --accent-background-color: var(--color-gray13);
+    --accent-color: var(--color-cyan-dark);
+    --color: var(--color-black);
+    --background-color: var(--color-white);
+    --border-color: var(--color-cyan-dark);
+    --error-color: var(--color-red);
+    --button-color: var(--color-black);
+    --button-background-color: var(--color-gray13);
+    --button-select-color: var(--color-white);
+    --button-select-background-color: var(--color-cyan-dark);
+  }
 }
 
 *
@@ -299,7 +322,7 @@ body
   width: 3rem;
 }
 
-.saved .container .header input
+.saved .container .header #upload
 {
   display: none;
 }
@@ -594,8 +617,10 @@ body
 
 dialog
 {
+  background-color: var(--background-color);
   border: 1px solid var(--accent-color);
   border-radius: 1rem;
+  color: var(--color);
   padding: 1rem;
 }
 
@@ -794,6 +819,8 @@ dialog#details::backdrop
 
 dialog#details input
 {
+  background-color: var(--background-color);
+  color: var(--color);
   width: 100%;
 }
 
