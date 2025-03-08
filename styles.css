@@ -707,33 +707,33 @@ dialog#about .container
 {
   dialog#about .container
   {
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 2fr;
     grid-template-rows: unset;
   }
 }
 
 dialog#about .container .logo
 {
-  align-items: center;;
+  align-items: center;
   display: flex;
   grid-row: 1;
   justify-content: center;
   padding: 0.5rem;
 }
 
-dialog#about .container .logo img
-{
-  max-height: 100%;
-  max-width: 100%;
-}
-
 @media (width > 768px)
 {
-  dialog#about .container .logo img
+  dialog#about .container .logo
   {
     grid-column: 1;
     grid-row: unset;
   }
+}
+
+dialog#about .container .logo img
+{
+  max-height: 12rem;
+  max-width: 12rem;
 }
 
 dialog#about .container .info
@@ -746,6 +746,15 @@ dialog#about .container .info
   padding: 0.5rem;
 }
 
+@media (width > 768px)
+{
+  dialog#about .container .info
+  {
+    grid-column: 2;
+    grid-row: unset;
+  }
+}
+
 dialog#about .container .info span
 {
   font-size: 1.25rem;
@@ -756,15 +765,6 @@ dialog#about .container .info .title
 {
   font-size: 1.5rem;
   font-weight: bold;
-}
-
-@media (width > 768px)
-{
-  dialog#about .container .info .title
-  {
-    grid-column: 2;
-    grid-row: unset;
-  }
 }
 
 dialog#license::backdrop,
