@@ -203,6 +203,7 @@ body
   align-items: center;
   display: flex;
   grid-column: 1;
+  height: 100%;
   justify-content: center;
 }
 
@@ -218,6 +219,7 @@ body
   display: flex;
   font-size: 1.25rem;
   grid-column: 2;
+  height: 100%;
   justify-content: left;
 }
 
@@ -226,6 +228,7 @@ body
   align-items: center;
   display: flex;
   grid-column: 3;
+  height: 100%;
   justify-content: center;
 }
 
@@ -314,7 +317,7 @@ body
   border-radius: 1rem;
   color: var(--color);
   display: grid;
-  grid-template-columns: 5rem 1fr 2rem 2rem;
+  grid-template-columns: 5rem 1fr 2rem;
   margin: 0.5rem;
   min-height: 5.5rem;
   padding: 0.5rem;
@@ -332,6 +335,7 @@ body
   align-items: center;
   display: flex;
   grid-column: 1;
+  height: 100%;
   justify-content: center;
 }
 
@@ -347,23 +351,16 @@ body
   flex-direction: column;
   font-size: 1.25rem;
   grid-column: 2;
+  height: 100%;
   text-align: left;
-}
-
-.saved .container .matches .tile .delete
-{
-  align-items: center;
-  color: var(--error-color);
-  display: flex;
-  grid-column: 3;
-  justify-content: center;
 }
 
 .saved .container .matches .tile .arrow
 {
   align-items: center;
   display: flex;
-  grid-column: 4;
+  grid-column: 3;
+  height: 100%;
   justify-content: center;
 }
 
