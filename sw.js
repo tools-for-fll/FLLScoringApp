@@ -5,7 +5,7 @@
 
 const prefix = "fll-scorer-";
 
-const cacheName = `${prefix}site-v3`;
+const cacheName = `${prefix}site-v1`;
 
 const assets =
 [
@@ -17,16 +17,7 @@ const assets =
   "external/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2",
   "external/jquery-3.7.1.min.js",
   "favicon.webp",
-  "icons/icon-128x128.webp",
-  "icons/icon-144x144.webp",
-  "icons/icon-152x152.webp",
-  "icons/icon-192x192.webp",
-  "icons/icon-384x384.webp",
-  "icons/icon-512x512.webp",
-  "icons/icon-72x72.webp",
-  "icons/icon-96x96.webp",
   "index.html",
-  "manifest.webmanifest",
   "no_touch.webp",
   "scorer.js",
   "seasons/2015/info.json",
