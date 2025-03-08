@@ -106,7 +106,7 @@ iosPWASplash(icon, color = "white")
 }
 
 // Generate iOS splash screens from the favicon.
-iosPWASplash("favicon.png", "#000000");
+iosPWASplash("favicon.webp", "#000000");
 
 // Extend JQuery by adding a showModal() method (mimic-ing the corresponding
 // method in the standard DOM model).
@@ -554,9 +554,9 @@ updateSaved()
       let date = new Date(parseInt(keys[idx].substring(6))).toLocaleString();
 
       // Construct the HTML for a tile to represent this saved match.
-      let html = `<div class="tile" data-key="${keys[idx]}" ` +
-                 `     data-score="${data.score}" ` +
-                 `     data-comment="${data.comment}">` +
+      let html = `<button class="tile" data-key="${keys[idx]}" ` +
+                 `        data-score="${data.score}" ` +
+                 `        data-comment="${data.comment}">` +
                  `  <div class="logo">` +
                  `    <img src="${years[year].logo}" alt="FLL game logo" />` +
                  `  </div>` +
@@ -565,9 +565,8 @@ updateSaved()
                  `    <span>${date}</span>` +
                  `    <span>Score: ${data.score}</span>` +
                  `  </span>` +
-                 `  <span class="delete fa fa-trash"></span>` +
                  `  <span class="arrow fa fa-chevron-right"></span>` +
-                 `</div>`;
+                 `</button>`;
 
       // Insert this tile into the list of saved matches.
       saved.find(".matches").append(html);
@@ -575,7 +574,6 @@ updateSaved()
 
     // Add the click handlers for the saved scores.
     $(".saved .container .matches .tile").on("click", selectSaved);
-    $(".saved .container .matches .tile .delete").on("click", deleteSaved);
   }
 }
 
@@ -609,18 +607,20 @@ showScorer()
   // See if the scorer panel is readonly.
   if(readonly)
   {
-    // Disable/hide the reset and save buttons.
-    $(".scorer .container .header .reset").css("visibility", "hidden");
-    $(".scorer .container .footer .save").css("visibility", "hidden");
+    // Disable/hide the reset and save buttons, and show the delete button.
+    $(".scorer .header #reset").css("visibility", "hidden");
+    $(".scorer .footer #save").hide();
+    $(".scorer .footer #delete").show();
 
     // Show the details at the top of the scoresheet.
     $(".scorer .container .missions .details").show();
   }
   else
   {
-    // Enable/show the reset and save buttons.
-    $(".scorer .container .header .reset").css("visibility", "visible");
-    $(".scorer .container .footer .save").css("visibility", "visible");
+    // Enable/show the reset and save buttons, and hide the delete button.
+    $(".scorer .header #reset").css("visibility", "visible");
+    $(".scorer .footer #save").show();
+    $(".scorer .footer #delete").hide();
 
     // Hide the details at the top of the scoresheet.
     $(".scorer .container .missions .details").hide();
@@ -967,7 +967,7 @@ loadScoresheet(year, name)
       html += `<span>${name}</span>`;
       if(noTouch)
       {
-        html += `<img class="no_touch" src="no_touch.png" ` +
+        html += `<img class="no_touch" src="no_touch.webp" ` +
                 `alt="No touch restriction" />`;
       }
       html += `</div>`;
@@ -1169,8 +1169,8 @@ selectYear(e)
 async function
 selectSaved(e)
 {
-  let target = $(e.currentTarget);
-  let state = JSON.parse(storage.getItem(target.data("key")));
+  const target = $(e.currentTarget);
+  const state = JSON.parse(storage.getItem(target.data("key")));
   let year;
 
   // Loop through the available scoresheets, looking for this one.
@@ -1193,11 +1193,17 @@ selectSaved(e)
   await loadScoresheet(state.year, years[year].name);
 
   // Insert the saved match information into the scoresheet details.
+  const details = $(".scorer .container .missions .details");
   let date =
     new Date(parseInt(target.data("key").substring(6))).toLocaleString();
   let html = `<span class="title">${state.comment}</span>` +
              `<span>${date}</span>`;
-  $(".scorer .container .missions .details div").html(html);
+  details.find("div").html(html);
+
+  // Copy the match details to the scoresheet.
+  details.data("key", target.data("key"));
+  details.data("score", state.score);
+  details.data("comment", state.comment);
 
   // Un-select all buttons for all the mission selections.
   $(".mission_sel button").removeClass("selected");
@@ -1232,37 +1238,31 @@ selectSaved(e)
 function
 deleteSaved(e)
 {
-  let target = $(e.target);
-
-  // The click may have originated on a child of the tile, so navigate up the
-  // DOM until the tile is found.
-  while(!target.hasClass("tile"))
-  {
-    target = target.parent();
-  }
+  const details = $(".scorer .container .missions .details");
 
   // Called when the delete has been confirmed by the user.
   function
   confirm()
   {
     // Remove this entry from the storage.
-    storage.removeItem(target.data("key"));
+    storage.removeItem(details.data("key"));
 
-    // Update the list of saved scores.
+    // Update and show the list of saved scores.
     updateSaved();
+    showPrevious();
   }
 
   // Convert the save time from milliseconds to a locale-specific strign.
-  const date = new Date(parseInt(target.data("key").substring(6))).
+  const date = new Date(parseInt(details.data("key").substring(6))).
                      toLocaleString();
 
   // Show a confirmation dialog to ensure that the user wants to delete this
   // saved scoresheet.
-  showConfirm(`${target.data("comment")}` +
+  showConfirm(`${details.data("comment")}` +
               `<br>` +
               `${date}` +
               `<br>` +
-              `Score: ${target.data("score")}` +
+              `Score: ${details.data("score")}` +
               `<br>` +
               `<br>` +
               `Are you sure you want to delete this scoresheet?`, confirm);
@@ -1275,7 +1275,7 @@ deleteSaved(e)
 function
 upload()
 {
-  const input = $(".saved .container .header #upload");
+  const input = $(".saved .container .header #file");
   let json;
 
   // Called when the contents of the file should be loaded into local storage.
@@ -1437,12 +1437,12 @@ loaded()
     if(isIOS)
     {
       buttons.find(".empty2").hide();
-      buttons.find(".ios_install").css("display", "flex");
+      buttons.find("#ios_install").css("display", "flex");
     }
     else if(isAndroid)
     {
       buttons.find(".empty2").hide();
-      buttons.find(".android_install").css("display", "flex");
+      buttons.find("#android_install").css("display", "flex");
     }
   }
 
@@ -1463,13 +1463,14 @@ loaded()
     let name = data["name"]["en_US"];
 
     // Construct the HTML for the tile that represents this year.
-    let html = `<div class="tile" data-year="${year}" data-name="${name}">` +
+    let html = `<button class="tile" data-year="${year}" ` +
+               `        data-name="${name}">` +
                `  <div class="logo">` +
                `    <img src="${logo}" alt="FLL game logo" />` +
                `  </div>` +
                `  <span class="title">${season} ${name}</span>` +
                `  <span class="arrow fa fa-chevron-right"></span>` +
-               `</div>`;
+               `</button>`;
 
     // Append the tile for this year to the main panel.
     $(".main .content").append(html);
@@ -1486,25 +1487,27 @@ loaded()
   for(let year = new Date().getFullYear() + 1; year >= 2015; year--)
   {
     // Load the information about this year.
-    await $.getJSON(`seasons/${year}/info.json`).done(yearLoad).catch(() => { });
+    await $.getJSON(`seasons/${year}/info.json`).
+            done(yearLoad).catch(() => { });
   }
 
   // Add click handlers to the main panel.
-  $(".main .container .header .about").on("click", showAbout);
-  $(".main .container .header .ios_install").on("click", showIOS);
-  $(".main .container .header .android_install").on("click", showAndroid);
-  $(".main .container .header .list").on("click", showSaved);
+  $(".main .header #about").on("click", showAbout);
+  $(".main .header #ios_install").on("click", showIOS);
+  $(".main .header #android_install").on("click", showAndroid);
+  $(".main .header #list").on("click", showSaved);
   $(".tile").on("click", selectYear);
 
   // Add click handlers to the saved scores panel.
-  $(".saved .container .header .back").on("click", showPrevious);
-  $(".saved .container .header .upload").on("click", upload);
-  $(".saved .container .header .download").on("click", download);
+  $(".saved .header #back").on("click", showPrevious);
+  $(".saved .header #upload").on("click", upload);
+  $(".saved .header #download").on("click", download);
 
   // Add click handlers to the scorer panel.
-  $(".scorer .container .header .back").on("click", showPrevious);
-  $(".scorer .container .header .reset").on("click", resetScoresheet);
-  $(".scorer .container .footer .save").on("click", saveScoresheet);
+  $(".scorer .header #back").on("click", showPrevious);
+  $(".scorer .header #reset").on("click", resetScoresheet);
+  $(".scorer .footer #save").on("click", saveScoresheet);
+  $(".scorer .footer #delete").on("click", deleteSaved);
 
   // Show the main panel (now that it is fully populated).
   $(".main").show();

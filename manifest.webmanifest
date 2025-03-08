@@ -10,43 +10,43 @@
   [
     {
       "sizes": "72x72",
-      "src": "icons/icon-72x72.png",
-      "type": "image/png"
+      "src": "icons/icon-72x72.webp",
+      "type": "image/webp"
     },
     {
       "sizes": "96x96",
-      "src": "icons/icon-96x96.png",
-      "type": "image/png"
+      "src": "icons/icon-96x96.webp",
+      "type": "image/webp"
     },
     {
       "sizes": "128x128",
-      "src": "icons/icon-128x128.png",
-      "type": "image/png"
+      "src": "icons/icon-128x128.webp",
+      "type": "image/webp"
     },
     {
       "sizes": "144x144",
-      "src": "icons/icon-144x144.png",
-      "type": "image/png"
+      "src": "icons/icon-144x144.webp",
+      "type": "image/webp"
     },
     {
       "sizes": "152x152",
-      "src": "icons/icon-152x152.png",
-      "type": "image/png"
+      "src": "icons/icon-152x152.webp",
+      "type": "image/webp"
     },
     {
       "sizes": "192x192",
-      "src": "icons/icon-192x192.png",
-      "type": "image/png"
+      "src": "icons/icon-192x192.webp",
+      "type": "image/webp"
     },
     {
       "sizes": "384x384",
-      "src": "icons/icon-384x384.png",
-      "type": "image/png"
+      "src": "icons/icon-384x384.webp",
+      "type": "image/webp"
     },
     {
       "sizes": "512x512",
-      "src": "icons/icon-512x512.png",
-      "type": "image/png"
+      "src": "icons/icon-512x512.webp",
+      "type": "image/webp"
     }
   ],
   "id": "index.html",
@@ -59,43 +59,43 @@
       "form_factor": "narrow",
       "label": "The main panel shown on mobile.",
       "sizes": "662x1434",
-      "src": "screenshots/screen1n.png",
-      "type": "image/png"
+      "src": "screenshots/screen1n.webp",
+      "type": "image/webp"
     },
     {
       "form_factor": "narrow",
       "label": "The scoring panel shown on mobile.",
       "sizes": "662x1434",
-      "src": "screenshots/screen2n.png",
-      "type": "image/png"
+      "src": "screenshots/screen2n.webp",
+      "type": "image/webp"
     },
     {
       "form_factor": "narrow",
       "label": "The saved score panel shown on mobile.",
       "sizes": "662x1434",
-      "src": "screenshots/screen3n.png",
-      "type": "image/png"
+      "src": "screenshots/screen3n.webp",
+      "type": "image/webp"
     },
     {
       "form_factor": "wide",
       "label": "The main panel shown on desktop.",
       "sizes": "1735x864",
-      "src": "screenshots/screen1w.png",
-      "type": "image/png"
+      "src": "screenshots/screen1w.webp",
+      "type": "image/webp"
     },
     {
       "form_factor": "wide",
       "label": "The scoring panel shown on desktop.",
       "sizes": "1735x864",
-      "src": "screenshots/screen2w.png",
-      "type": "image/png"
+      "src": "screenshots/screen2w.webp",
+      "type": "image/webp"
     },
     {
       "form_factor": "wide",
       "label": "The saved score panel shown on desktop.",
       "sizes": "1735x864",
-      "src": "screenshots/screen3w.png",
-      "type": "image/png"
+      "src": "screenshots/screen3w.webp",
+      "type": "image/webp"
     }
   ],
   "short_name": "FLL Scorer",

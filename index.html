@@ -10,14 +10,15 @@ license file in the root directory of this project.
     <title>FLL Scorer</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="favicon.png">
-    <link rel="shortcut icon" href="favicon.png">
+    <link rel="icon" href="favicon.webp">
+    <link rel="shortcut icon" href="favicon.webp">
     <meta name="description" content="Scorer for the FIRST LEGO League (FLL) robot game">
     <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="FLL Scorer">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.webp">
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="external/font-awesome-4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="external/jquery-3.7.1.min.js"></script>
@@ -28,15 +29,23 @@ license file in the root directory of this project.
       <div class="container">
         <div class="header">
           <div class="buttons">
-            <span class="about fa fa-question-circle-o"></span>
+            <button id="about">
+              <span class="fa fa-question-circle-o"></span>
+            </button>
             <span class="empty"></span>
           </div>
           <span>FLL Scorer</span>
           <div class="buttons">
             <span class="empty empty2"></span>
-            <span class="ios_install fa fa-cloud-download"></span>
-            <span class="android_install fa fa-cloud-download"></span>
-            <span class="list fa fa-list"></span>
+            <button id="ios_install">
+              <span class="fa fa-cloud-download"></span>
+            </button>
+            <button id="android_install">
+              <span class="fa fa-cloud-download"></span>
+            </button>
+            <button id="list">
+              <span class="fa fa-list"></span>
+            </button>
           </div>
         </div>
         <div class="content"></div>
@@ -46,15 +55,21 @@ license file in the root directory of this project.
       <div class="container">
         <div class="header">
           <div class="buttons">
-            <span class="back fa fa-chevron-left"></span>
+            <button id="back">
+              <span class="back fa fa-chevron-left"></span>
+            </button>
             <span class="empty"></span>
           </div>
           <span>Saved Matches</span>
           <div class="buttons">
-            <span class="upload fa fa-upload"></span>
-            <span class="download fa fa-download"></span>
+            <button id="upload">
+              <span class="upload fa fa-upload"></span>
+            </button>
+            <button id="download">
+              <span class="download fa fa-download"></span>
+            </button>
           </div>
-          <input id="upload" type="file" accept=".json" />
+          <input id="file" type="file" accept=".json" />
         </div>
         <div class="matches"></div>
       </div>
@@ -62,9 +77,13 @@ license file in the root directory of this project.
     <div class="scorer">
       <div class="container">
         <div class="header">
-          <span class="back fa fa-chevron-left"></span>
+          <button id="back">
+            <span class="fa fa-chevron-left"></span>
+          </button>
           <span class="game"></span>
-          <span class="reset fa fa-refresh"></span>
+          <button id="reset">
+            <span class="fa fa-refresh"></span>
+          </button>
         </div>
         <div class="missions"></div>
         <div class="footer">
@@ -72,7 +91,14 @@ license file in the root directory of this project.
             <span>Score: </span>
             <span class="score"></span>
           </span>
-          <span class="save fa fa-save"></span>
+          <span>
+            <button id="save">
+              <span class="fa fa-save"></span>
+            </button>
+            <button id="delete">
+              <span class="fa fa-trash"></span>
+            </button>
+          </span>
         </div>
       </div>
     </div>
@@ -148,7 +174,7 @@ license file in the root directory of this project.
     <dialog id="about">
       <div class="container">
         <div class="logo">
-          <img src="favicon.png" alt="FLL Scorer logo"/>
+          <img src="favicon.webp" alt="FLL Scorer logo"/>
         </div>
         <div class="info">
           <span class="title">FLL Scorer</span>
@@ -156,8 +182,9 @@ license file in the root directory of this project.
           <span>Copyright &copy; 2025 Brian Kircher</span>
           <br>
           <span>
-            <a id="btn_license">License</a>; uses <a id="btn_jquery">JQuery</a>
-            and <a id="btn_fontawesome">FontAwesome 4.7</a>
+            <a id="btn_license" href="">License</a>; uses
+            <a id="btn_jquery" href="">JQuery</a> and
+            <a id="btn_fontawesome" href="">FontAwesome 4.7</a>
           </span>
           <br>
           <button id="ok">OK</button>

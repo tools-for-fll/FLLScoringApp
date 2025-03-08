@@ -69,6 +69,16 @@
   box-sizing: border-box;
 }
 
+a
+{
+  color: var(--color);
+}
+
+a:hover
+{
+  color: var(--accent-color);
+}
+
 body
 {
   color: var(--color);
@@ -76,6 +86,27 @@ body
   font-family: sans-serif;
   margin: 0;
   padding: 0;
+}
+
+.header button,
+.footer button
+{
+  align-items: center;
+  background-color: unset;
+  border: 0;
+  color: unset;
+  display: flex;
+  font-size: 1.5rem;
+  height: 3rem;
+  justify-content: center;
+  width: 3rem;
+}
+
+.header button:hover,
+.footer button:hover
+{
+  background-color: var(--button-select-background-color);
+  color: var(--button-select-color);
 }
 
 .main
@@ -129,49 +160,15 @@ body
   justify-content: center;
 }
 
-.main .container .header .buttons .about
+.main .container .header .buttons #ios_install,
+.main .container .header .buttons #android_install
 {
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  height: 3rem;
-  justify-content: center;
-  width: 3rem;
+  display: none;
 }
 
 .main .container .header .buttons .empty
 {
   height: 3rem;
-  width: 3rem;
-}
-
-.main .container .header .buttons .ios_install
-{
-  align-items: center;
-  cursor: pointer;
-  display: none;
-  height: 3rem;
-  justify-content: center;
-  width: 3rem;
-}
-
-.main .container .header .buttons .android_install
-{
-  align-items: center;
-  cursor: pointer;
-  display: none;
-  height: 3rem;
-  justify-content: center;
-  width: 3rem;
-}
-
-.main .container .header .buttons .list
-{
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  height: 3rem;
-  justify-content: center;
   width: 3rem;
 }
 
@@ -183,15 +180,22 @@ body
 
 .main .container .content .tile
 {
+  background-color: var(--background-color);
   border: 1px solid var(--border-color);
   border-radius: 1rem;
-  cursor: pointer;
+  color: var(--color);
   display: grid;
   grid-template-columns: 5rem 1fr 2rem;
   height: 5.5rem;
   margin: 0.5rem;
   padding: 0.5rem;
   width: calc(100% - 1rem);
+}
+
+.main .container .content .tile:hover
+{
+  background-color: var(--button-background-color);
+  color: var(--button-color);
 }
 
 .main .container .content .tile .logo
@@ -286,43 +290,13 @@ body
   justify-content: center;
 }
 
-.saved .container .header .buttons .back
-{
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  height: 3rem;
-  justify-content: center;
-  width: 3rem;
-}
-
 .saved .container .header .buttons .empty
 {
   height: 3rem;
   width: 3rem;
 }
 
-.saved .container .header .buttons .upload
-{
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  height: 3rem;
-  justify-content: center;
-  width: 3rem;
-}
-
-.saved .container .header .buttons .download
-{
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  height: 3rem;
-  justify-content: center;
-  width: 3rem;
-}
-
-.saved .container .header #upload
+.saved .container .header #file
 {
   display: none;
 }
@@ -335,15 +309,22 @@ body
 
 .saved .container .matches .tile
 {
+  background-color: var(--background-color);
   border: 1px solid var(--border-color);
   border-radius: 1rem;
-  cursor: pointer;
+  color: var(--color);
   display: grid;
   grid-template-columns: 5rem 1fr 2rem 2rem;
   margin: 0.5rem;
   min-height: 5.5rem;
   padding: 0.5rem;
   width: calc(100% - 1rem);
+}
+
+.saved .container .matches .tile:hover
+{
+  background-color: var(--button-background-color);
+  color: var(--button-color);
 }
 
 .saved .container .matches .tile .logo
@@ -366,11 +347,13 @@ body
   flex-direction: column;
   font-size: 1.25rem;
   grid-column: 2;
+  text-align: left;
 }
 
 .saved .container .matches .tile .delete
 {
   align-items: center;
+  color: var(--error-color);
   display: flex;
   grid-column: 3;
   justify-content: center;
@@ -389,7 +372,6 @@ body
   align-items: center;
   border: 1px solid var(--border-color);
   border-radius: 1rem;
-  cursor: pointer;
   display: flex;
   font-size: 1.25rem;
   height: 5.5rem;
@@ -441,26 +423,6 @@ body
   grid-row: 1;
   justify-content: space-between;
   padding: 0 0.5rem;
-}
-
-.scorer .container .header .back
-{
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  height: 3rem;
-  justify-content: center;
-  width: 3rem;
-}
-
-.scorer .container .header .reset
-{
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  height: 3rem;
-  justify-content: center;
-  width: 3rem;
 }
 
 .scorer .container .missions
@@ -603,16 +565,6 @@ body
   grid-row: 3;
   justify-content: space-between;
   padding: 0 0.5rem;
-}
-
-.scorer .container .footer .save
-{
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  height: 3rem;
-  justify-content: center;
-  width: 3rem;
 }
 
 dialog
