@@ -5,7 +5,7 @@
 
 const prefix = "fll-scorer-";
 
-const cacheName = `${prefix}site-v2`;
+const cacheName = `${prefix}site-v1`;
 
 const assets =
 [
