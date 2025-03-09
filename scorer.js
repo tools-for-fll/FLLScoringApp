@@ -555,8 +555,9 @@ updateSaved()
 
       // Construct the HTML for a tile to represent this saved match.
       let html = `<button class="tile" data-key="${keys[idx]}" ` +
-                 `        data-score="${data.score}" ` +
-                 `        data-comment="${data.comment}">` +
+                 `data-score="${data.score}" data-comment="${data.comment}" ` +
+                 `aria-label="${years[year].name}, ${data.comment}, ` +
+                 `score ${data.score}">` +
                  `  <div class="logo">` +
                  `    <img src="${years[year].logo}" alt="FLL game logo" />` +
                  `  </div>` +
@@ -1451,7 +1452,10 @@ loaded()
   // is to keep the browser's console quiet about it...it is a "don't care"
   // kind of error (it is prefered to have an orientation lock, but not a
   // requirement).
-  //screen.orientation.lock("portrait").catch(() => { });
+  if(screen.orientation.lock !== undefined)
+  {
+    screen.orientation.lock("portrait").catch(() => { });
+  }
 
   // Called when the information for a given year is loaded.
   function
@@ -1464,7 +1468,7 @@ loaded()
 
     // Construct the HTML for the tile that represents this year.
     let html = `<button class="tile" data-year="${year}" ` +
-               `        data-name="${name}">` +
+               `data-name="${name}" aria-label="${name}">` +
                `  <div class="logo">` +
                `    <img src="${logo}" alt="FLL game logo" />` +
                `  </div>` +

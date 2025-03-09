@@ -14,6 +14,8 @@ license file in the root directory of this project.
     <link rel="shortcut icon" href="favicon.webp">
     <meta name="description" content="Scorer for the FIRST LEGO League (FLL) robot game">
     <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="FLL Scorer">
@@ -27,9 +29,9 @@ license file in the root directory of this project.
   <body>
     <div class="main">
       <div class="container">
-        <div class="header">
+        <nav class="header">
           <div class="buttons">
-            <button id="about">
+            <button id="about" aria-label="about">
               <span class="fa fa-question-circle-o"></span>
             </button>
             <span class="empty"></span>
@@ -37,69 +39,69 @@ license file in the root directory of this project.
           <span>FLL Scorer</span>
           <div class="buttons">
             <span class="empty empty2"></span>
-            <button id="ios_install">
+            <button id="ios_install" aria-label="install">
               <span class="fa fa-cloud-download"></span>
             </button>
-            <button id="android_install">
+            <button id="android_install" aria-label="install">
               <span class="fa fa-cloud-download"></span>
             </button>
-            <button id="list">
+            <button id="list" aria-label="list">
               <span class="fa fa-list"></span>
             </button>
           </div>
-        </div>
-        <div class="content"></div>
+        </nav>
+        <main class="content"></main>
       </div>
     </div>
     <div class="saved">
       <div class="container">
-        <div class="header">
+        <nav class="header">
           <div class="buttons">
-            <button id="back">
+            <button id="back" aria-label="back">
               <span class="back fa fa-chevron-left"></span>
             </button>
             <span class="empty"></span>
           </div>
           <span>Saved Matches</span>
           <div class="buttons">
-            <button id="upload">
+            <button id="upload" aria-label="upload">
               <span class="upload fa fa-upload"></span>
             </button>
-            <button id="download">
+            <button id="download" aria-label="download">
               <span class="download fa fa-download"></span>
             </button>
           </div>
           <input id="file" type="file" accept=".json" />
-        </div>
-        <div class="matches"></div>
+        </nav>
+        <main class="matches"></main>
       </div>
     </div>
     <div class="scorer">
       <div class="container">
-        <div class="header">
-          <button id="back">
+        <nav class="header">
+          <button id="back" aria-label="back">
             <span class="fa fa-chevron-left"></span>
           </button>
           <span class="game"></span>
-          <button id="reset">
+          <button id="reset" aria-label="reset">
             <span class="fa fa-refresh"></span>
           </button>
-        </div>
-        <div class="missions"></div>
-        <div class="footer">
+        </nav>
+        <main class="missions"></main>
+        <nav class="footer">
           <span>
             <span>Score: </span>
             <span class="score"></span>
           </span>
           <span>
-            <button id="save">
+            <button id="save" aria-label="save">
               <span class="fa fa-save"></span>
             </button>
-            <button id="delete">
+            <button id="delete" aria-label="delete">
               <span class="fa fa-trash"></span>
             </button>
           </span>
-        </div>
+        </mav>
       </div>
     </div>
     <dialog id="ios_install">
@@ -440,7 +442,7 @@ license file in the root directory of this project.
         <span>Save Scoresheet</span>
         <br>
         <span>Title</span>
-        <input type="text" />
+        <input id="filename" type="text" />
         <br>
         <span>
           <button id="save">Save</button>

@@ -131,6 +131,19 @@ body
   animation: page_uncover 0.5s ease normal;
 }
 
+@media (prefers-reduced-motion: reduce)
+{
+  .main.cover
+  {
+    animation: page_cover 0s ease normal;
+  }
+
+  .main.uncover
+  {
+    animation: page_uncover 0s ease normal;
+  }
+}
+
 .main .container
 {
   display: grid;
@@ -262,6 +275,29 @@ body
 .saved.hide
 {
   animation: page_hide 0.5s ease normal;
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+  .saved.cover
+  {
+    animation: page_cover 0s ease normal;
+  }
+
+  .saved.uncover
+  {
+    animation: page_uncover 0s ease normal;
+  }
+
+  .saved.show
+  {
+    animation: page_show 0s ease normal;
+  }
+
+  .saved.hide
+  {
+    animation: page_hide 0s ease normal;
+  }
 }
 
 .saved .container
@@ -398,6 +434,19 @@ body
 .scorer.hide
 {
   animation: page_hide 0.5s ease normal;
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+  .scorer.show
+  {
+    animation: page_show 0s ease normal;
+  }
+
+  .scorer.hide
+  {
+    animation: page_hide 0s ease normal;
+  }
 }
 
 .scorer .container
@@ -581,6 +630,19 @@ dialog[open]
 dialog.hide
 {
   animation: hide_dialog 0.25s ease normal;
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+  dialog[open]
+  {
+    animation: show_dialog 0s ease normal;
+  }
+
+  dialog.hide
+  {
+    animation: hide_dialog 0.01s ease normal;
+  }
 }
 
 dialog a
