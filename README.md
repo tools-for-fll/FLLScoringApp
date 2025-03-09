@@ -5,9 +5,9 @@ license file in the root directory of this project.
 
 # Overview
 
-This project is a scoring application for the robot game of FIRST LEGO League
-(FLL). It is targeted at mobile devices, and is intended to be installed as a
-progressive web app (PWA).
+This project is a scoring application for the robot game of FIRST&reg;
+LEGO&reg; League (FLL). It is targeted at mobile devices, and is intended to be
+installed as a progressive web app (PWA).
 
 At startup, a list of FLL seasons that can be scored are shown:
 
