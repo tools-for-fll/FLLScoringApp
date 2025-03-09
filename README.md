@@ -51,10 +51,13 @@ transferred, which is outside the scope of this application!).
 
 # Caveats
 
-The scores produced by the application are believed to be accurate. However,
+The scores produced by this application are believed to be accurate. However,
 this is not an official scoring application; discrepancies between the scores
 that this application produces and the scores from the official scoring
-software are by definition the fault of this application.
+software are, by definition, the fault of this application.
+
+At present, this application is English-only, and full accessibility has not
+been completed.
 
 # Installation
 

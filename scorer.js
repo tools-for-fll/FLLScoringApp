@@ -861,6 +861,12 @@ computeScore()
     score += evaluate(mission.score_rule, state);
   }
 
+  // Do not allow the score to be negative (applies to older games).
+  if(score < 0)
+  {
+    score = 0;
+  }
+
   // Update the scorer panel with the computed score.
   $(".scorer .container .footer .score").html(score);
 }
